@@ -101,6 +101,8 @@
 		18BC7D7D2FD1A20C006825B8 /* El3ab */ = {
 			isa = PBXGroup;
 			children = (
+				18BC7DB22FD1B5A7006825B8 /* Modules */,
+				18BC7DB12FD1A915006825B8 /* Core */,
 				18BC7D7E2FD1A20C006825B8 /* AppDelegate.swift */,
 				18BC7D802FD1A20C006825B8 /* SceneDelegate.swift */,
 				18BC7D822FD1A20C006825B8 /* ViewController.swift */,
@@ -129,6 +131,52 @@
 				18BC7DA52FD1A20E006825B8 /* Info.plist */,
 			);
 			path = El3abUITests;
+			sourceTree = "<group>";
+		};
+		18BC7DB12FD1A915006825B8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		18BC7DB22FD1B5A7006825B8 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				18BC7DB32FD1B5B2006825B8 /* Sports */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		18BC7DB32FD1B5B2006825B8 /* Sports */ = {
+			isa = PBXGroup;
+			children = (
+				18BC7DB62FD1B5FE006825B8 /* Presentation */,
+				18BC7DB52FD1B5F0006825B8 /* Domain */,
+				18BC7DB42FD1B5E5006825B8 /* Data */,
+			);
+			path = Sports;
+			sourceTree = "<group>";
+		};
+		18BC7DB42FD1B5E5006825B8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		18BC7DB52FD1B5F0006825B8 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		18BC7DB62FD1B5FE006825B8 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
