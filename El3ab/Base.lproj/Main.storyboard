@@ -42,7 +42,7 @@
         <!--El3ab-->
         <scene sceneID="TMl-mY-ZCv">
             <objects>
-                <viewController id="VEi-rB-i5R" sceneMemberID="viewController">
+                <viewController id="VEi-rB-i5R" customClass="SportsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6pd-tZ-icN">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
