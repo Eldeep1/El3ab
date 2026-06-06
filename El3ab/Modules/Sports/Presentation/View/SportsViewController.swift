@@ -28,6 +28,7 @@ class SportsViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         title = "El3ab"
         view.backgroundColor = .bgColor
+        navigationItem.backButtonDisplayMode = .minimal
         setupCollectionView()
         setupConstraints()
     }
