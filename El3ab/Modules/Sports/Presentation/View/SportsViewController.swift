@@ -90,6 +90,7 @@ class SportsViewController: UIViewController, UICollectionViewDelegate, UICollec
         guard let leaguesVC = storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as? LeaguesViewController else {
             return
         }
+        leaguesVC.hidesBottomBarWhenPushed = true
         
         navigationController?.pushViewController(leaguesVC, animated: true)    }
 

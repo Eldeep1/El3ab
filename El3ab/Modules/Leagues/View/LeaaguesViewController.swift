@@ -26,6 +26,7 @@ class LeaguesViewController: UIViewController {
         
         leaguesTableView.register(nib, forCellReuseIdentifier: "LeagueCell")
         leaguesTableView.backgroundColor = .bgColor
+        self.view.backgroundColor = .bgColor    
         leaguesTableView.separatorStyle = .none
         self.presenter = LeaguesPresenter()
         presenter?.attachView(self)
