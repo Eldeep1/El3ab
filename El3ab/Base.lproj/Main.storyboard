@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GCE-iV-XzH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GCE-iV-XzH">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +14,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -28,7 +29,7 @@
             <objects>
                 <viewController id="rm1-I6-cKe" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TKN-Pu-zCC">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="3Po-mV-maV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -44,7 +45,7 @@
             <objects>
                 <viewController id="VEi-rB-i5R" customClass="SportsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6pd-tZ-icN">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="kAS-L0-4Ar"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.090196078430000007" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -56,13 +57,44 @@
             </objects>
             <point key="canvasLocation" x="782" y="-1004"/>
         </scene>
+        <!--Leagues View Controller-->
+        <scene sceneID="UDl-Av-Uzn">
+            <objects>
+                <viewController storyboardIdentifier="LeaguesViewController" id="1T1-Y0-54q" customClass="LeaguesViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0dk-ea-e9P">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tq4-sM-Mys">
+                                <rect key="frame" x="0.0" y="118" width="430" height="746"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RYq-Mp-lYS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="RYq-Mp-lYS" firstAttribute="trailing" secondItem="tq4-sM-Mys" secondAttribute="trailing" id="3df-ax-KC2"/>
+                            <constraint firstItem="RYq-Mp-lYS" firstAttribute="bottom" secondItem="tq4-sM-Mys" secondAttribute="bottom" id="cNQ-uX-Ved"/>
+                            <constraint firstItem="tq4-sM-Mys" firstAttribute="top" secondItem="RYq-Mp-lYS" secondAttribute="top" id="gx6-Is-jfL"/>
+                            <constraint firstItem="tq4-sM-Mys" firstAttribute="leading" secondItem="RYq-Mp-lYS" secondAttribute="leading" id="zAm-VT-Ysy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="gwa-fi-yIb"/>
+                    <connections>
+                        <outlet property="leaguesTableView" destination="tq4-sM-Mys" id="7R6-0z-3Mu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GtC-rF-778" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1535" y="-1001"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="nAW-Cs-REq">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c2I-Hc-YuW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7pz-YH-9VR">
-                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
+                        <rect key="frame" x="0.0" y="118" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.0" green="0.54117647058823526" blue="0.23921568627450981" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.058823529409999999" green="0.090196078430000007" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -102,8 +134,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="sportscourt" catalog="system" width="128" height="84"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="sportscourt" catalog="system" width="128" height="83"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
