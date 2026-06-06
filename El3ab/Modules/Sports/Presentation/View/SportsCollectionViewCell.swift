@@ -21,7 +21,7 @@ class SportsCollectionViewCell: UICollectionViewCell {
     
     private let sportImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill  // Changed to fill the container
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -29,7 +29,7 @@ class SportsCollectionViewCell: UICollectionViewCell {
     
     private let overlayView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.4) // Dark overlay for better text visibility
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -38,7 +38,7 @@ class SportsCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textAlignment = .center
-        label.textColor = .white  // White text for contrast against image
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

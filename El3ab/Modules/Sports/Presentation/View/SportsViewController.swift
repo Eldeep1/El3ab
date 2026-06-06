@@ -68,18 +68,16 @@ class SportsViewController: UIViewController, UICollectionViewDelegate, UICollec
                            layout collectionViewLayout: UICollectionViewLayout,
                            sizeForItemAt indexPath: IndexPath) -> CGSize {
             let spacing: CGFloat = 16
-            let insets: CGFloat = 40 // 20 on each side
+            let insets: CGFloat = 40
             let totalSpacing = spacing + insets
             let width = (collectionView.bounds.width - totalSpacing) / 2
-            let height = width * 1.2 // Aspect ratio for sports cards
+            let height = width * 1.2
             
             return CGSize(width: width, height: height)
         }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let selectedSport = sports[indexPath.item]
             print("Selected: \(selectedSport)")
-            
-            // Add haptic feedback
             let generator = UIImpactFeedbackGenerator(style: .light)
             generator.impactOccurred()
             

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1868C3792FD45D170098C577 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1868C3782FD45D170098C577 /* TeamDetailsViewController.swift */; };
 		187C271F2FD305690097E204 /* SportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C271E2FD305690097E204 /* SportsViewController.swift */; };
 		187C27212FD3078C0097E204 /* SportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C27202FD3078C0097E204 /* SportsCollectionViewCell.swift */; };
 		187C27242FD3162C0097E204 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C27232FD3162C0097E204 /* UIColors.swift */; };
@@ -19,8 +20,6 @@
 		18BC7D8E2FD1A20D006825B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BC7D8C2FD1A20D006825B8 /* LaunchScreen.storyboard */; };
 		18BC7D992FD1A20E006825B8 /* El3abTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC7D982FD1A20E006825B8 /* El3abTests.swift */; };
 		18BC7DA42FD1A20E006825B8 /* El3abUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC7DA32FD1A20E006825B8 /* El3abUITests.swift */; };
-		18BC7DB82FD1DD92006825B8 /* SportsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BC7DB72FD1DD92006825B8 /* SportsView.xib */; };
-		18BC7DBB2FD1DE2D006825B8 /* SportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC7DBA2FD1DE2D006825B8 /* SportsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1868C3782FD45D170098C577 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		187C271E2FD305690097E204 /* SportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewController.swift; sourceTree = "<group>"; };
 		187C27202FD3078C0097E204 /* SportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		187C27232FD3162C0097E204 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
@@ -59,8 +59,6 @@
 		18BC7D9F2FD1A20E006825B8 /* El3abUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = El3abUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BC7DA32FD1A20E006825B8 /* El3abUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = El3abUITests.swift; sourceTree = "<group>"; };
 		18BC7DA52FD1A20E006825B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18BC7DB72FD1DD92006825B8 /* SportsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SportsView.xib; sourceTree = "<group>"; };
-		18BC7DBA2FD1DE2D006825B8 /* SportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +86,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1868C3732FD45C5A0098C577 /* TeamDetails */ = {
+			isa = PBXGroup;
+			children = (
+				1868C3762FD45CA00098C577 /* Data */,
+				1868C3752FD45C8F0098C577 /* Domain */,
+				1868C3742FD45C740098C577 /* Presentation */,
+			);
+			path = TeamDetails;
+			sourceTree = "<group>";
+		};
+		1868C3742FD45C740098C577 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				1868C3772FD45CDA0098C577 /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		1868C3752FD45C8F0098C577 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		1868C3762FD45CA00098C577 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1868C3772FD45CDA0098C577 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1868C3782FD45D170098C577 /* TeamDetailsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		187C27222FD316180097E204 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +200,7 @@
 		18BC7DB22FD1B5A7006825B8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				1868C3732FD45C5A0098C577 /* TeamDetails */,
 				18BC7DBC2FD1F1B3006825B8 /* Main */,
 				18BC7DB32FD1B5B2006825B8 /* Sports */,
 			);
@@ -203,8 +242,6 @@
 		18BC7DB92FD1DDA0006825B8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				18BC7DB72FD1DD92006825B8 /* SportsView.xib */,
-				18BC7DBA2FD1DE2D006825B8 /* SportsView.swift */,
 				187C271E2FD305690097E204 /* SportsViewController.swift */,
 				187C27202FD3078C0097E204 /* SportsCollectionViewCell.swift */,
 			);
@@ -330,7 +367,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BC7D8E2FD1A20D006825B8 /* LaunchScreen.storyboard in Resources */,
-				18BC7DB82FD1DD92006825B8 /* SportsView.xib in Resources */,
 				18BC7D8B2FD1A20D006825B8 /* Assets.xcassets in Resources */,
 				18BC7D862FD1A20C006825B8 /* Main.storyboard in Resources */,
 			);
@@ -357,13 +393,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18BC7DBB2FD1DE2D006825B8 /* SportsView.swift in Sources */,
 				187C27242FD3162C0097E204 /* UIColors.swift in Sources */,
 				18BC7D832FD1A20C006825B8 /* ViewController.swift in Sources */,
 				18BC7D892FD1A20C006825B8 /* El3ab.xcdatamodeld in Sources */,
 				187C271F2FD305690097E204 /* SportsViewController.swift in Sources */,
 				187C27212FD3078C0097E204 /* SportsCollectionViewCell.swift in Sources */,
 				18BC7D7F2FD1A20C006825B8 /* AppDelegate.swift in Sources */,
+				1868C3792FD45D170098C577 /* TeamDetailsViewController.swift in Sources */,
 				18BC7D812FD1A20C006825B8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
