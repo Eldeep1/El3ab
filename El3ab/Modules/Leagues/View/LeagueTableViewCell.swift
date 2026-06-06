@@ -15,7 +15,6 @@ class LeagueTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        leagueImageView.layer.cornerRadius = 12
         leagueImageView.clipsToBounds = true
         
         self.selectionStyle = .none
@@ -35,6 +34,8 @@ class LeagueTableViewCell: UITableViewCell {
         super.layoutSubviews()
 
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        leagueImageView.layer.cornerRadius = leagueImageView.frame.height / 2
+
     }
     
 }
