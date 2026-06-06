@@ -86,6 +86,11 @@ class SportsViewController: UIViewController, UICollectionViewDelegate, UICollec
             // You can add navigation to a detail view controller here
             // let detailVC = SportDetailViewController(sport: selectedSport)
             // navigationController?.pushViewController(detailVC, animated: true)
+        
+        guard let leaguesVC = storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as? LeaguesViewController else {
+            return
         }
+        
+        navigationController?.pushViewController(leaguesVC, animated: true)    }
 
 }

@@ -24,6 +24,8 @@
 		B84E48992FD3E6B00007E287 /* LeaaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */; };
 		B84E489A2FD3E6B00007E287 /* LeaguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */; };
 		B84E489B2FD3E6B00007E287 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48912FD3E6B00007E287 /* League.swift */; };
+		B84E489F2FD3EDCD0007E287 /* LeagueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E489D2FD3EDCD0007E287 /* LeagueTableViewCell.swift */; };
+		B84E48A02FD3EDCD0007E287 /* LeagueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84E489E2FD3EDCD0007E287 /* LeagueTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		B84E48912FD3E6B00007E287 /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
 		B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesPresenter.swift; sourceTree = "<group>"; };
 		B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaaguesViewController.swift; sourceTree = "<group>"; };
+		B84E489D2FD3EDCD0007E287 /* LeagueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableViewCell.swift; sourceTree = "<group>"; };
+		B84E489E2FD3EDCD0007E287 /* LeagueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +257,8 @@
 			isa = PBXGroup;
 			children = (
 				B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */,
+				B84E489D2FD3EDCD0007E287 /* LeagueTableViewCell.swift */,
+				B84E489E2FD3EDCD0007E287 /* LeagueTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 			files = (
 				18BC7D8E2FD1A20D006825B8 /* LaunchScreen.storyboard in Resources */,
 				18BC7DB82FD1DD92006825B8 /* SportsView.xib in Resources */,
+				B84E48A02FD3EDCD0007E287 /* LeagueTableViewCell.xib in Resources */,
 				18BC7D8B2FD1A20D006825B8 /* Assets.xcassets in Resources */,
 				18BC7D862FD1A20C006825B8 /* Main.storyboard in Resources */,
 			);
@@ -408,6 +415,7 @@
 				B84E489A2FD3E6B00007E287 /* LeaguesPresenter.swift in Sources */,
 				B84E489B2FD3E6B00007E287 /* League.swift in Sources */,
 				18BC7D7F2FD1A20C006825B8 /* AppDelegate.swift in Sources */,
+				B84E489F2FD3EDCD0007E287 /* LeagueTableViewCell.swift in Sources */,
 				18BC7D812FD1A20C006825B8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
