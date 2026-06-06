@@ -21,6 +21,9 @@
 		18BC7DA42FD1A20E006825B8 /* El3abUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC7DA32FD1A20E006825B8 /* El3abUITests.swift */; };
 		18BC7DB82FD1DD92006825B8 /* SportsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BC7DB72FD1DD92006825B8 /* SportsView.xib */; };
 		18BC7DBB2FD1DE2D006825B8 /* SportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC7DBA2FD1DE2D006825B8 /* SportsView.swift */; };
+		B84E48992FD3E6B00007E287 /* LeaaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */; };
+		B84E489A2FD3E6B00007E287 /* LeaguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */; };
+		B84E489B2FD3E6B00007E287 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48912FD3E6B00007E287 /* League.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		18BC7DA52FD1A20E006825B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18BC7DB72FD1DD92006825B8 /* SportsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SportsView.xib; sourceTree = "<group>"; };
 		18BC7DBA2FD1DE2D006825B8 /* SportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsView.swift; sourceTree = "<group>"; };
+		B84E48912FD3E6B00007E287 /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
+		B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesPresenter.swift; sourceTree = "<group>"; };
+		B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaaguesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,7 @@
 		18BC7DB22FD1B5A7006825B8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B84E48982FD3E6B00007E287 /* Leagues */,
 				18BC7DBC2FD1F1B3006825B8 /* Main */,
 				18BC7DB32FD1B5B2006825B8 /* Sports */,
 			);
@@ -224,6 +231,40 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B84E48922FD3E6B00007E287 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B84E48912FD3E6B00007E287 /* League.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B84E48942FD3E6B00007E287 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B84E48962FD3E6B00007E287 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B84E48982FD3E6B00007E287 /* Leagues */ = {
+			isa = PBXGroup;
+			children = (
+				B84E48922FD3E6B00007E287 /* Model */,
+				B84E48942FD3E6B00007E287 /* Presenter */,
+				B84E48962FD3E6B00007E287 /* View */,
+			);
+			path = Leagues;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,6 +404,9 @@
 				18BC7D892FD1A20C006825B8 /* El3ab.xcdatamodeld in Sources */,
 				187C271F2FD305690097E204 /* SportsViewController.swift in Sources */,
 				187C27212FD3078C0097E204 /* SportsCollectionViewCell.swift in Sources */,
+				B84E48992FD3E6B00007E287 /* LeaaguesViewController.swift in Sources */,
+				B84E489A2FD3E6B00007E287 /* LeaguesPresenter.swift in Sources */,
+				B84E489B2FD3E6B00007E287 /* League.swift in Sources */,
 				18BC7D7F2FD1A20C006825B8 /* AppDelegate.swift in Sources */,
 				18BC7D812FD1A20C006825B8 /* SceneDelegate.swift in Sources */,
 			);
