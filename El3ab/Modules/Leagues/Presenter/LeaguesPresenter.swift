@@ -10,11 +10,22 @@ import Foundation
 protocol LeaguesPresenterProtocol{
     func loadData()
     func leagueClickd(_ leagueKey:Int)
+    func attachView(_ view:LeaguesViewProtocol)
+    func getLeaguesCount()->Int
+    func getLeague(index:Int)->Leagues
 }
 
 class LeaguesPresenter : LeaguesPresenterProtocol{
+    func getLeague(index: Int) -> Leagues {
+        data![index]
+    }
+    
+    func getLeaguesCount() -> Int {
+        data?.count ?? 0
+    }
+    
     weak var view : LeaguesViewProtocol?
-    var data:[Leagues]=[
+    var data:[Leagues]?=[
         Leagues(
                 leagueKey: 3,
                 leagueName: "UEFA Champions League",
@@ -44,12 +55,16 @@ class LeaguesPresenter : LeaguesPresenterProtocol{
                 countryLogo: nil
             ),
     ]
+    
+    func attachView(_ view:LeaguesViewProtocol){
+        self.view=view
+    }
     func loadData() {
         view?.showLoading()
         //do the api call
         //how will we handle the errors?
         //like view.showError()
-        view?.showData(leagues: data)
+        view?.showData(leagues: data ?? [])
         view?.hideLoading()
     }
     
