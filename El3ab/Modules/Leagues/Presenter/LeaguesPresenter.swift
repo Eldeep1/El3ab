@@ -42,7 +42,7 @@ class LeaguesPresenter : LeaguesPresenterProtocol{
             ),
         Leagues(
                 leagueKey: 3,
-                leagueName: "UEFA Champions League",
+                leagueName: "UEFA Champions Leagueeeeeeeeeeeeeeeeee",
                 countryName: "eurocups",
                 leagueLogo: "https://allsportsapi.com3_uefa_champions_league.png",
                 countryLogo: nil

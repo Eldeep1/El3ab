@@ -19,7 +19,7 @@ class LeagueTableViewCell: UITableViewCell {
         leagueImageView.clipsToBounds = true
         
         self.selectionStyle = .none
-        self.backgroundColor = .cellColor
+        self.backgroundColor = .none
         self.contentView.backgroundColor = .cellColor
 
     }
@@ -30,6 +30,11 @@ class LeagueTableViewCell: UITableViewCell {
         //will navigate somehow later, think from the actual table view
 
         // Configure the view for the selected state
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
     }
     
 }
