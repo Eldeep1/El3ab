@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -81,6 +81,10 @@
 		B84E489D2FD3EDCD0007E287 /* LeagueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueTableViewCell.swift; sourceTree = "<group>"; };
 		B84E489E2FD3EDCD0007E287 /* LeagueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B83E1A652FD5096B008599E4 /* Favourites */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Favourites; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		18BC7D782FD1A20C006825B8 /* Frameworks */ = {
@@ -244,6 +248,7 @@
 		18BC7DB22FD1B5A7006825B8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B83E1A652FD5096B008599E4 /* Favourites */,
 				185A369E2FD49DDB00513D24 /* TeamDetails */,
 				B84E48982FD3E6B00007E287 /* Leagues */,
 				18BC7DBC2FD1F1B3006825B8 /* Main */,
@@ -358,6 +363,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B83E1A652FD5096B008599E4 /* Favourites */,
 			);
 			name = El3ab;
 			productName = El3ab;
