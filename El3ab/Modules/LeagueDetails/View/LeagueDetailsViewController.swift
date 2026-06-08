@@ -6,12 +6,13 @@
 //
 
 import UIKit
-
+import Alamofire
 class LeagueDetailsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("🚀 ViewDidLoad has started!")
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -27,6 +28,15 @@ class LeagueDetailsViewController: UIViewController {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: SectionHeaderView.identifier
         )
+        
+        
+        AF.request("https://httpbin.org/get").response { response in
+                    if let statusCode = response.response?.statusCode {
+                        print("✅ Alamofire is working! Status code: \(statusCode)")
+                    } else if let error = response.error {
+                        print("❌ Alamofire request failed: \(error.localizedDescription)")
+                    }
+            }
         // Do any additional setup after loading the view.
     }
     

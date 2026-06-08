@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Alamofire
 protocol FavouriteLeaguesViewProtocol{
     func reloadFavourites()
     func showInternetError()
@@ -34,6 +34,13 @@ class FavouriteLeaguesViewController: UIViewController {
         leaguesTableView.separatorStyle = .none
         leaguesTableView.dataSource = self
         leaguesTableView.delegate = self
+        AF.request("https://httpbin.org/get").response { response in
+                    if let statusCode = response.response?.statusCode {
+                        print("✅ Alamofire is working! Status code: \(statusCode)")
+                    } else if let error = response.error {
+                        print("❌ Alamofire request failed: \(error.localizedDescription)")
+                    }
+                }
         
     }
 }
