@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="C6q-Zc-o9q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GCE-iV-XzH">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -28,17 +28,18 @@
         <!--Team Details View Controller-->
         <scene sceneID="JAg-kI-baQ">
             <objects>
-                <viewController id="A72-3F-vjz" customClass="TeamDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamDetailsViewController" id="A72-3F-vjz" customClass="TeamDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tw6-Kp-jJY">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Obe-AI-fTo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ObJ-bx-a6T"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrS-Lp-Saq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2778" y="-236"/>
+            <point key="canvasLocation" x="618" y="-1698"/>
         </scene>
         <!--Favourite Leagues View Controller-->
         <scene sceneID="6Kf-1D-r97">
@@ -106,6 +107,7 @@
                     <navigationItem key="navigationItem" id="CrJ-Zw-9GP"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="Kf2-dW-i6x" id="UdK-Dh-Zbh"/>
+                        <segue destination="C6q-Zc-o9q" kind="show" id="IwC-U0-Vxg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xlx-Tm-YVz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -115,13 +117,13 @@
         <!--League Details View Controller-->
         <scene sceneID="tjA-eE-srh">
             <objects>
-                <viewController id="C6q-Zc-o9q" customClass="LeagueDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeagueDetailsViewController" id="C6q-Zc-o9q" customClass="LeagueDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZA5-bj-RCm">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97q-3q-mb1">
-                                <rect key="frame" x="0.0" y="118" width="430" height="746"/>
+                                <rect key="frame" x="0.0" y="59" width="430" height="804"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="BiU-g2-bOZ"/>
                                 <cells>
@@ -145,13 +147,15 @@
                             <constraint firstItem="97q-3q-mb1" firstAttribute="top" secondItem="bRg-RY-6X0" secondAttribute="top" id="vEe-JG-iQJ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="7rr-up-7xn"/>
                     <connections>
                         <outlet property="collectionView" destination="97q-3q-mb1" id="4vT-6G-EKS"/>
+                        <segue destination="A72-3F-vjz" kind="show" id="4vI-gC-Bnd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lL6-dm-f1t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2853" y="-1001"/>
+            <point key="canvasLocation" x="-747" y="-1698"/>
         </scene>
         <!--El3ab-->
         <scene sceneID="TMl-mY-ZCv">
@@ -195,6 +199,7 @@
                     <navigationItem key="navigationItem" id="gwa-fi-yIb"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="tq4-sM-Mys" id="7R6-0z-3Mu"/>
+                        <segue destination="C6q-Zc-o9q" kind="show" identifier="LeaguesViewControllerToLeaguesDetailsViewController" id="WMh-OK-K8d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GtC-rF-778" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -268,6 +273,9 @@
             <point key="canvasLocation" x="34.883720930232556" y="-236.26609442060087"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WMh-OK-K8d"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="sportscourt" catalog="system" width="128" height="83"/>

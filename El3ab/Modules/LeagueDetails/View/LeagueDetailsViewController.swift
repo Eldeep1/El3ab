@@ -10,9 +10,14 @@ import Alamofire
 class LeagueDetailsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    func configureSelectedLeague(league:Leagues){
+        //presenter.fetchData() or presenter = Presenter()
+        print(league.leagueName)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("🚀 ViewDidLoad has started!")
+        print("🚀 ViewDidLoad has started!") // ايوا ال AI
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -148,12 +153,26 @@ class LeagueDetailsViewController: UIViewController {
     */
 
 }
+protocol LeagueDetailsViewControllerProtocol: AnyObject {
+    
+    
+    func navigateToTeamDetails(with team: Team)
+}
+
 extension LeagueDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return LeagueSections.allCases.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if(indexPath.section==2){
+//            presenter.didSelectTeam(at: indexPath.item)
+            print("we've clicked here")
+            navigateToTeamDetails(with: Team(name: "help", logoImageName: "String", players: [], coaches: []))
+            
+        }
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        guard let sectionType = LeagueSections(rawValue: section) else { return 0 }
 //        switch sectionType {
@@ -219,4 +238,16 @@ extension LeagueDetailsViewController {
 
         return header
     }
+}
+extension LeagueDetailsViewController : LeagueDetailsViewControllerProtocol{
+    
+    func navigateToTeamDetails(with team: Team) {
+        let detailsVC = TeamDetailsViewController()
+        
+        
+//        detailsVC.configure(with: team)
+        
+        navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    
 }

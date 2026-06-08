@@ -40,6 +40,7 @@
 		B84685A32FD69F5B00EED429 /* LeagueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B846859D2FD69F5B00EED429 /* LeagueTableViewCell.xib */; };
 		B84E48992FD3E6B00007E287 /* LeaaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */; };
 		B84E489A2FD3E6B00007E287 /* LeaguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */; };
+		B886568D2FD6E22800FFF38A /* LeagueDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886568C2FD6E22800FFF38A /* LeagueDetailsPresenter.swift */; };
 		B8886B052FD6664000BDAC0F /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886B042FD6664000BDAC0F /* SectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 		B846859D2FD69F5B00EED429 /* LeagueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueTableViewCell.xib; sourceTree = "<group>"; };
 		B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesPresenter.swift; sourceTree = "<group>"; };
 		B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaaguesViewController.swift; sourceTree = "<group>"; };
+		B886568C2FD6E22800FFF38A /* LeagueDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsPresenter.swift; sourceTree = "<group>"; };
 		B8886B042FD6664000BDAC0F /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -357,6 +359,7 @@
 		B8267D4B2FD5D502003AAA39 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				B886568C2FD6E22800FFF38A /* LeagueDetailsPresenter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				B8267D542FD5E5EE003AAA39 /* UpComingEventsViewCell.swift in Sources */,
 				187C27212FD3078C0097E204 /* SportsCollectionViewCell.swift in Sources */,
 				B84E48992FD3E6B00007E287 /* LeaaguesViewController.swift in Sources */,
+				B886568D2FD6E22800FFF38A /* LeagueDetailsPresenter.swift in Sources */,
 				B8886B052FD6664000BDAC0F /* SectionHeaderView.swift in Sources */,
 				B8267D582FD5FEBF003AAA39 /* LatestEventsCollectionViewCell.swift in Sources */,
 				B84E489A2FD3E6B00007E287 /* LeaguesPresenter.swift in Sources */,
