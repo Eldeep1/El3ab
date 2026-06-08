@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -338,6 +338,7 @@
 		B8267D482FD5D4EA003AAA39 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B886568B2FD6E19C00FFF38A /* cells */,
 				B8267D4F2FD5E2E7003AAA39 /* LeagueDetailsViewController.swift */,
 			);
 			path = View;
@@ -356,13 +357,6 @@
 		B8267D4B2FD5D502003AAA39 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				B8267D512FD5E5EE003AAA39 /* UpComingEventsViewCell.swift */,
-				B8267D522FD5E5EE003AAA39 /* UpComingEventsViewCell.xib */,
-				B8267D552FD5FEBF003AAA39 /* LatestEventsCollectionViewCell.swift */,
-				B8267D562FD5FEBF003AAA39 /* LatestEventsCollectionViewCell.xib */,
-				B8267D592FD603F1003AAA39 /* TeamsCollectionViewCell.swift */,
-				B8267D5A2FD603F1003AAA39 /* TeamsCollectionViewCell.xib */,
-				B8886B042FD6664000BDAC0F /* SectionHeaderView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -457,6 +451,20 @@
 				B84E48962FD3E6B00007E287 /* View */,
 			);
 			path = Leagues;
+			sourceTree = "<group>";
+		};
+		B886568B2FD6E19C00FFF38A /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				B8267D512FD5E5EE003AAA39 /* UpComingEventsViewCell.swift */,
+				B8267D522FD5E5EE003AAA39 /* UpComingEventsViewCell.xib */,
+				B8267D552FD5FEBF003AAA39 /* LatestEventsCollectionViewCell.swift */,
+				B8267D562FD5FEBF003AAA39 /* LatestEventsCollectionViewCell.xib */,
+				B8267D592FD603F1003AAA39 /* TeamsCollectionViewCell.swift */,
+				B8267D5A2FD603F1003AAA39 /* TeamsCollectionViewCell.xib */,
+				B8886B042FD6664000BDAC0F /* SectionHeaderView.swift */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
