@@ -75,7 +75,15 @@
                 <constraint firstAttribute="trailing" secondItem="3vO-ej-QfC" secondAttribute="trailing" constant="16" id="tKI-ow-UI2"/>
             </constraints>
             <size key="customSize" width="371" height="98"/>
-            <point key="canvasLocation" x="135.1145038167939" y="4.2253521126760569"/>
+            <connections>
+                <outlet property="enemyLogoImageView" destination="Q2U-xP-XaX" id="sPg-P3-YAX"/>
+                <outlet property="matchScore" destination="3vO-ej-QfC" id="HXt-Yn-C8P"/>
+                <outlet property="matchTeamsLabel" destination="R5d-7B-aOl" id="fGX-Y8-4RK"/>
+                <outlet property="matchTimeLabel" destination="L2P-wI-q1h" id="pbc-xK-R8t"/>
+                <outlet property="teamLogoImageView" destination="PQj-JK-K7z" id="Fwq-MH-w1j"/>
+                <outlet property="vsLabel" destination="sVE-4I-3C5" id="1Ap-1c-aVW"/>
+            </connections>
+            <point key="canvasLocation" x="190" y="-16"/>
         </collectionViewCell>
     </objects>
     <resources>

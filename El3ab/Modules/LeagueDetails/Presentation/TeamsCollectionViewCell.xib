@@ -41,6 +41,10 @@
                 <constraint firstItem="Jdq-rF-Lvc" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zeP-DA-OL5"/>
             </constraints>
             <size key="customSize" width="128" height="164"/>
+            <connections>
+                <outlet property="teamLogoImageView" destination="Jdq-rF-Lvc" id="iKL-W1-Uce"/>
+                <outlet property="teamNameLabel" destination="9bM-ko-Y2D" id="Kme-BA-e5I"/>
+            </connections>
             <point key="canvasLocation" x="-13.740458015267174" y="29.577464788732396"/>
         </collectionViewCell>
     </objects>

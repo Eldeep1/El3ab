@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
@@ -41,7 +41,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.14866724610000001" green="0.16068080069999999" blue="0.16906836629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aWH-Ea-giI" firstAttribute="top" secondItem="zW7-vh-Aqg" secondAttribute="top" id="8GA-5Z-YFQ"/>
                             <constraint firstItem="aWH-Ea-giI" firstAttribute="leading" secondItem="e9p-Py-f32" secondAttribute="trailing" constant="8" id="APq-c6-VtQ"/>
@@ -79,6 +79,13 @@
                 <constraint firstItem="Uqs-XL-v4L" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="veG-tw-AfX"/>
             </constraints>
             <size key="customSize" width="164" height="175"/>
+            <connections>
+                <outlet property="enemyLogoImageView" destination="aWH-Ea-giI" id="Fr8-OM-ZYy"/>
+                <outlet property="matchTeamsLabel" destination="e0m-Vx-mIG" id="Ra3-0H-nbU"/>
+                <outlet property="matchTimeLabel" destination="Uqs-XL-v4L" id="eca-xq-lp9"/>
+                <outlet property="teamLogoImageView" destination="zW7-vh-Aqg" id="UYd-IK-7fg"/>
+                <outlet property="vsLabel" destination="e9p-Py-f32" id="FhM-j0-ANS"/>
+            </connections>
             <point key="canvasLocation" x="-76.33587786259541" y="31.338028169014088"/>
         </collectionViewCell>
     </objects>
