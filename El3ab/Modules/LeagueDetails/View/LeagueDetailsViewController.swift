@@ -17,6 +17,8 @@ class LeagueDetailsViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let favouriteButton = UIBarButtonItem(image: UIImage(systemName: "heart") , style: UIBarButtonItem.Style.plain, target: self, action: #selector (favouriteTapped))
+        navigationItem.rightBarButtonItem = favouriteButton
         print("🚀 ViewDidLoad has started!") // ايوا ال AI
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -44,7 +46,9 @@ class LeagueDetailsViewController: UIViewController {
             }
         // Do any additional setup after loading the view.
     }
-    
+    @objc func favouriteTapped(){
+        print("save to core data...")
+    }
     private func createCompositionalLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             
