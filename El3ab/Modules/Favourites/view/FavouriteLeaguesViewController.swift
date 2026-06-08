@@ -43,6 +43,16 @@ class FavouriteLeaguesViewController: UIViewController {
                 }
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//      Get the new view controller using segue.destination.
+//      Pass the selected object to the new view controller.
+        if segue.identifier == "FavouritesLeaguesToLeagueDetails" {
+            let LeagueDetailsVC = segue.destination as! LeagueDetailsViewController
+            if let league = sender as? Leagues {
+                LeagueDetailsVC.configureSelectedLeague(league: league)
+            }
+        }
+    }
 }
 
 extension FavouriteLeaguesViewController :FavouriteLeaguesViewProtocol{
@@ -74,6 +84,10 @@ extension FavouriteLeaguesViewController : UITableViewDelegate,UITableViewDataSo
         cell.leagueTitle.text=league?.leagueName
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let league = presenter?.getFavouriteLeagueItem(index: indexPath.row)
+        performSegue(withIdentifier: "FavouritesLeaguesToLeagueDetails", sender: league)
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler:{

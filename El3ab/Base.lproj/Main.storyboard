@@ -30,7 +30,7 @@
             <objects>
                 <viewController storyboardIdentifier="TeamDetailsViewController" id="A72-3F-vjz" customClass="TeamDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tw6-Kp-jJY">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Obe-AI-fTo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -107,7 +107,7 @@
                     <navigationItem key="navigationItem" id="CrJ-Zw-9GP"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="Kf2-dW-i6x" id="UdK-Dh-Zbh"/>
-                        <segue destination="C6q-Zc-o9q" kind="show" id="IwC-U0-Vxg"/>
+                        <segue destination="C6q-Zc-o9q" kind="show" identifier="FavouritesLeaguesToLeagueDetails" id="IwC-U0-Vxg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xlx-Tm-YVz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -119,11 +119,11 @@
             <objects>
                 <viewController storyboardIdentifier="LeagueDetailsViewController" id="C6q-Zc-o9q" customClass="LeagueDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZA5-bj-RCm">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97q-3q-mb1">
-                                <rect key="frame" x="0.0" y="59" width="430" height="804"/>
+                                <rect key="frame" x="0.0" y="162" width="430" height="653"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="BiU-g2-bOZ"/>
                                 <cells>
@@ -274,7 +274,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WMh-OK-K8d"/>
+        <segue reference="IwC-U0-Vxg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="107"/>
