@@ -33,6 +33,7 @@
 		B83E1A642FD4AF07008599E4 /* Coach.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E1A5F2FD4AF07008599E4 /* Coach.swift */; };
 		B84E48992FD3E6B00007E287 /* LeaaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */; };
 		B84E489A2FD3E6B00007E287 /* LeaguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */; };
+		B8886B052FD6664000BDAC0F /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886B042FD6664000BDAC0F /* SectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		B83E1A612FD4AF07008599E4 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesPresenter.swift; sourceTree = "<group>"; };
 		B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaaguesViewController.swift; sourceTree = "<group>"; };
+		B8886B042FD6664000BDAC0F /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -352,6 +354,7 @@
 				B8267D562FD5FEBF003AAA39 /* LatestEventsCollectionViewCell.xib */,
 				B8267D592FD603F1003AAA39 /* TeamsCollectionViewCell.swift */,
 				B8267D5A2FD603F1003AAA39 /* TeamsCollectionViewCell.xib */,
+				B8886B042FD6664000BDAC0F /* SectionHeaderView.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 				B8267D542FD5E5EE003AAA39 /* UpComingEventsViewCell.swift in Sources */,
 				187C27212FD3078C0097E204 /* SportsCollectionViewCell.swift in Sources */,
 				B84E48992FD3E6B00007E287 /* LeaaguesViewController.swift in Sources */,
+				B8886B052FD6664000BDAC0F /* SectionHeaderView.swift in Sources */,
 				B8267D582FD5FEBF003AAA39 /* LatestEventsCollectionViewCell.swift in Sources */,
 				B84E489A2FD3E6B00007E287 /* LeaguesPresenter.swift in Sources */,
 				18BC7D7F2FD1A20C006825B8 /* AppDelegate.swift in Sources */,

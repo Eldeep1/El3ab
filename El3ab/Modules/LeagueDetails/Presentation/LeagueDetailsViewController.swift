@@ -13,6 +13,8 @@ class LeagueDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
+        collectionView.delegate = self
+        
         self.view.backgroundColor = .bgColor
         self.collectionView.backgroundColor = .bgColor
         collectionView.collectionViewLayout = createCompositionalLayout()
@@ -20,6 +22,11 @@ class LeagueDetailsViewController: UIViewController {
             collectionView.register(UINib(nibName: "LatestEventsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "LatestEventsCollectionViewCell")
             collectionView.register(UINib(nibName: "TeamsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TeamsCollectionViewCell")
 
+        collectionView.register(
+            SectionHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: SectionHeaderView.identifier
+        )
         // Do any additional setup after loading the view.
     }
     
@@ -52,7 +59,18 @@ class LeagueDetailsViewController: UIViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 24, trailing: 16)
         section.orthogonalScrollingBehavior = .continuous // Enforces horizontal scrolling
         
-        // Optional: Add Section Header here for "Upcoming Events"
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(44)
+        )
+
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+
+        section.boundarySupplementaryItems = [header]
         
         return section
     }
@@ -68,7 +86,18 @@ class LeagueDetailsViewController: UIViewController {
         section.interGroupSpacing = 12
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 24, trailing: 16)
         
-        // Defaults to vertical scrolling matching the main collection view
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(44)
+        )
+
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+
+        section.boundarySupplementaryItems = [header]
         return section
     }
     private func createTeamsSection() -> NSCollectionLayoutSection {
@@ -83,6 +112,19 @@ class LeagueDetailsViewController: UIViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 16, trailing: 16)
         section.orthogonalScrollingBehavior = .continuous
         
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(44)
+        )
+
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+
+        section.boundarySupplementaryItems = [header]
+        
         return section
     }
     /*
@@ -96,7 +138,7 @@ class LeagueDetailsViewController: UIViewController {
     */
 
 }
-extension LeagueDetailsViewController: UICollectionViewDataSource {
+extension LeagueDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return LeagueSections.allCases.count
@@ -135,5 +177,36 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
             // cell.configure(with: model)
             return cell
         }
+    }
+}
+extension LeagueDetailsViewController {
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: SectionHeaderView.identifier,
+            for: indexPath
+        ) as! SectionHeaderView
+
+        switch LeagueSections(rawValue: indexPath.section) {
+        case .upcomingEvents:
+            header.titleLabel.text = "Upcoming Events"
+
+        case .latestEvents:
+            header.titleLabel.text = "Latest Events"
+
+        case .teams:
+            header.titleLabel.text = "Teams"
+
+        case .none:
+            header.titleLabel.text = ""
+        }
+
+        return header
     }
 }
