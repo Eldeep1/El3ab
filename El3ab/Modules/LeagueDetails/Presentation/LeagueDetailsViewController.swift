@@ -44,7 +44,7 @@ class LeagueDetailsViewController: UIViewController {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
         // Fixed width/height for the horizontal card
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(220), heightDimension: .absolute(160))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(180), heightDimension: .absolute(160))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
@@ -53,6 +53,7 @@ class LeagueDetailsViewController: UIViewController {
         section.orthogonalScrollingBehavior = .continuous // Enforces horizontal scrolling
         
         // Optional: Add Section Header here for "Upcoming Events"
+        
         return section
     }
     
@@ -74,7 +75,7 @@ class LeagueDetailsViewController: UIViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(80), heightDimension: .absolute(100))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(100), heightDimension: .absolute(140))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)

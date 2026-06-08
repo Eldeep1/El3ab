@@ -24,19 +24,20 @@
                             <constraint firstAttribute="width" constant="66" id="uGB-Ve-Hss"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="broken wing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bM-ko-Y2D">
-                        <rect key="frame" x="17.666666666666671" y="122.99999999999999" width="93" height="20.333333333333329"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="broken wingsssss" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bM-ko-Y2D">
+                        <rect key="frame" x="6" y="123" width="116" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="9bM-ko-Y2D" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="7aB-C4-Tbu"/>
                 <constraint firstItem="9bM-ko-Y2D" firstAttribute="top" secondItem="Jdq-rF-Lvc" secondAttribute="bottom" constant="8" id="PGH-J7-zgS"/>
-                <constraint firstItem="9bM-ko-Y2D" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="egI-OD-TU2"/>
                 <constraint firstItem="Jdq-rF-Lvc" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="lxd-t0-eJr"/>
+                <constraint firstAttribute="trailing" secondItem="9bM-ko-Y2D" secondAttribute="trailing" constant="6" id="mec-Ij-geJ"/>
                 <constraint firstItem="Jdq-rF-Lvc" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zeP-DA-OL5"/>
             </constraints>
             <size key="customSize" width="128" height="164"/>
