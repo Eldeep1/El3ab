@@ -35,6 +35,7 @@ struct TeamAPI: Codable {
         let coachList = coaches?.map { $0.toCoach() } ?? []
         
         return Team(
+            teamID: teamKey,
             name: teamName,
             logoImageName: teamLogo ?? "",
             players: playerList,
