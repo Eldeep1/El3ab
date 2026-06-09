@@ -8,8 +8,17 @@
 import UIKit
 import Alamofire
 
+protocol LeagueDetailsViewControllerProtocol: AnyObject {
+    func navigateToTeamDetails(with teamId: String, sport: Sport)
+    func addToFavourite()
+    func existsInVafourite()
+    func showData()
+    func showLoading()
+}
 class LeagueDetailsViewController: UIViewController {
-
+    
+    var presenter:LeagueDetailsPresenterProtocol?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     private var selectedLeague: Leagues?
       private var currentSport: Sport = .football
@@ -151,9 +160,7 @@ class LeagueDetailsViewController: UIViewController {
     */
 
 }
-protocol LeagueDetailsViewControllerProtocol: AnyObject {
-    func navigateToTeamDetails(with teamId: String, sport: Sport)
-}
+
 extension LeagueDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
