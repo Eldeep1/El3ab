@@ -11,22 +11,23 @@ import Foundation
 enum APIRouter: URLRequestConvertible {
     case getLeagues(sport: Sport)
     case getTeamDetails(sport: Sport, teamId: String)
+    case getEvents(sport: Sport, leagueId: String, from: String, to: String)
     
     private var method: HTTPMethod {
         switch self {
-        case .getLeagues, .getTeamDetails:
+        case .getLeagues, .getTeamDetails, .getEvents:
             return .get
         }
     }
     
     private var path: String {
-        switch self {
-        case .getLeagues(let sport):
-            return "/\(sport.rawValue)/"
-        case .getTeamDetails(let sport, _):
-            return "/\(sport.rawValue)/"
+            switch self {
+            case .getLeagues(let sport),
+                 .getTeamDetails(let sport, _),
+                 .getEvents(let sport, _, _, _):
+                return "/\(sport.rawValue)/"
+            }
         }
-    }
     
     private var parameters: Parameters {
         switch self {
@@ -40,6 +41,14 @@ enum APIRouter: URLRequestConvertible {
                 "met": "Teams",
                 "APIkey": Constants.apiKey,
                 "teamId": teamId
+            ]
+        case .getEvents(_, let leagueId, let from, let to):
+            return [
+                "met" : "Fixtures",
+                "APIkey": Constants.apiKey,
+                "leagueId":leagueId,
+                "from":from,
+                "to":to
             ]
         }
     }

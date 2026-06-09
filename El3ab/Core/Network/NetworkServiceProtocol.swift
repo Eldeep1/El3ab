@@ -9,9 +9,11 @@ import Foundation
 protocol NetworkServiceProtocol {
     func fetchLeagues(sport: Sport, completion: @escaping (Result<[Leagues], Error>) -> Void)
     func fetchTeamDetails(sport: Sport, teamId: String, completion: @escaping (Result<Team, Error>) -> Void)
+    func fetchEventDetails(sport: Sport, leagueId: String, from:String, to:String, completion: @escaping (Result<[Event], Error>) -> Void)
 }
 
 class NetworkService: NetworkServiceProtocol {
+
     
     static let shared = NetworkService()
     private init() {}
@@ -81,4 +83,39 @@ class NetworkService: NetworkServiceProtocol {
                  }
              }
      }
-}
+    
+    func fetchEventDetails(sport: Sport, leagueId: String, from: String, to: String, completion: @escaping (Result<[Event], Error>) -> Void) {
+        
+        AF.request(APIRouter.getEvents(sport: sport, leagueId: leagueId, from: from, to: to))
+            .validate()
+            .responseDecodable(of: EventResponse.self) { response in
+                switch response.result {
+                case .success(let eventResponse):
+                    if eventResponse.success == 1, let result = eventResponse.result {
+                        let events = result.map { $0.toEvent() }
+                        print("Successfully fetched \(events.count) events")
+                        completion(.success(events))
+                    } else {
+                        let error = NSError(
+                            domain: "APIRouterErrorDomain",
+                            code: -1,
+                            userInfo: [NSLocalizedDescriptionKey: "API returned an unsuccessful status or empty results."]
+                        )
+                        completion(.failure(error))
+                    }
+                    
+                case .failure(let error):
+                    print("Network error: \(error.localizedDescription)")
+                    if let data = response.data {
+                        let jsonString = String(data: data, encoding: .utf8)
+                        print("Error response payload: \(jsonString ?? "No string representation")")
+                    }
+                    completion(.failure(error))
+                }
+            }
+    }
+        
+     
+    }
+    
+
