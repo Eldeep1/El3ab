@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+
 class LeagueDetailsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -151,11 +152,8 @@ class LeagueDetailsViewController: UIViewController {
 
 }
 protocol LeagueDetailsViewControllerProtocol: AnyObject {
-    
-    
-    func navigateToTeamDetails(with team: Team)
+    func navigateToTeamDetails(with teamId: String, sport: Sport)
 }
-
 extension LeagueDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -165,8 +163,8 @@ extension LeagueDetailsViewController: UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(indexPath.section==2){
 //            presenter.didSelectTeam(at: indexPath.item)
-            print("we've clicked here")
-            navigateToTeamDetails(with: Team(name: "help", logoImageName: "String", players: [], coaches: []))
+            let sampleTeamId = "96"
+            navigateToTeamDetails(with: sampleTeamId, sport: currentSport)
             
         }
     }
@@ -236,15 +234,11 @@ extension LeagueDetailsViewController {
         return header
     }
 }
-extension LeagueDetailsViewController : LeagueDetailsViewControllerProtocol{
+extension LeagueDetailsViewController: LeagueDetailsViewControllerProtocol {
     
-    func navigateToTeamDetails(with team: Team) {
+    func navigateToTeamDetails(with teamId: String, sport: Sport) {
         let detailsVC = TeamDetailsViewController()
-        
-        
-//        detailsVC.configure(with: team)
-        
+        detailsVC.configure(with: teamId, sport: sport)
         navigationController?.pushViewController(detailsVC, animated: true)
     }
-    
 }

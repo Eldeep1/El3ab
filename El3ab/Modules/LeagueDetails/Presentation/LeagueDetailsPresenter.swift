@@ -6,16 +6,12 @@
 //
 
 import Foundation
-class LeagueDetailsPresenter{
+
+class LeagueDetailsPresenter {
     weak var view: LeagueDetailsViewControllerProtocol?
-        private var teams: [Team] = []
-        
-        
-        func didSelectTeam(at index: Int) {
-            guard index < teams.count else { return }
-            let selectedTeam = teams[index]
-            
-            
-            view?.navigateToTeamDetails(with: selectedTeam)
-        }
+    private var teams: [Team] = []
+    
+    func didSelectTeam(at index: Int, teamId: String, sport: Sport) {
+        view?.navigateToTeamDetails(with: teamId, sport: sport)
+    }
 }
