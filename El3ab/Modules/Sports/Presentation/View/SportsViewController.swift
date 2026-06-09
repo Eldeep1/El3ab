@@ -14,8 +14,8 @@ class SportsViewController: UIViewController, UICollectionViewDelegate, UICollec
     private let sportsCollectionView: UICollectionView = {
          let layout = UICollectionViewFlowLayout()
          layout.scrollDirection = .vertical
-         layout.minimumLineSpacing = 16
-         layout.minimumInteritemSpacing = 16
+         layout.minimumLineSpacing = 20
+         layout.minimumInteritemSpacing = 20
          layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
          let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
          collectionView.backgroundColor = .bgColor
@@ -32,6 +32,7 @@ class SportsViewController: UIViewController, UICollectionViewDelegate, UICollec
         setupCollectionView()
         setupConstraints()
     }
+    
     private func setupCollectionView() {
          sportsCollectionView.delegate = self
          sportsCollectionView.dataSource = self
@@ -50,47 +51,56 @@ class SportsViewController: UIViewController, UICollectionViewDelegate, UICollec
      }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return sports.count
-        }
+        return sports.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: SportsCollectionViewCell.identifier,
-                for: indexPath
-            ) as? SportsCollectionViewCell else {
-                return UICollectionViewCell()
-            }
-            
-            let sport = sports[indexPath.item]
-            cell.configure(with: sport)
-            
-            return cell
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: SportsCollectionViewCell.identifier,
+            for: indexPath
+        ) as? SportsCollectionViewCell else {
+            return UICollectionViewCell()
         }
+        
+        let sport = sports[indexPath.item]
+        cell.configure(with: sport)
+        
+        return cell
+    }
+    
     func collectionView(_ collectionView: UICollectionView,
                            layout collectionViewLayout: UICollectionViewLayout,
                            sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let spacing: CGFloat = 16
-            let insets: CGFloat = 40
-            let totalSpacing = spacing + insets
-            let width = (collectionView.bounds.width - totalSpacing) / 2
-            let height = width * 1.2
-            
-            return CGSize(width: width, height: height)
-        }
+        let spacing: CGFloat = 20
+        let insets: CGFloat = 40
+        let totalSpacing = spacing + insets
+        let width = (collectionView.bounds.width - totalSpacing) / 2
+        let height = width * 1.4 // Made height bigger
+        
+        return CGSize(width: width, height: height)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            let selectedSport = sports[indexPath.item]
-            print("Selected: \(selectedSport)")
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
-            
-            // You can add navigation to a detail view controller here
-            // let detailVC = SportDetailViewController(sport: selectedSport)
-            // navigationController?.pushViewController(detailVC, animated: true)
-        
-        guard let leaguesVC = storyboard?.instantiateViewController(withIdentifier: "LeaguesViewController") as? LeaguesViewController else {
-            return
+        let selectedSport = sports[indexPath.item]
+        print("Selected: \(selectedSport)")
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        let sportEnum: Sport
+        switch selectedSport.lowercased() {
+        case "football":
+            sportEnum = .football
+        case "basketball":
+            sportEnum = .basketball
+        case "tennis":
+            sportEnum = .tennis
+        case "cricket":
+            sportEnum = .cricket
+        default:
+            sportEnum = .football
         }
+        let leaguesVC = LeaguesViewController()
+        leaguesVC.selectedSport = sportEnum
         leaguesVC.hidesBottomBarWhenPushed = true
-        
-        navigationController?.pushViewController(leaguesVC, animated: true)    }
-
+        navigationController?.pushViewController(leaguesVC, animated: true)
+    }
 }

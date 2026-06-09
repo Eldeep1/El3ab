@@ -11,7 +11,6 @@ class LatestEventsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var teamLogoImageView: UIImageView!
     @IBOutlet weak var enemyLogoImageView: UIImageView!
     
-    // Labels
     @IBOutlet weak var vsLabel: UILabel!
     @IBOutlet weak var matchTeamsLabel: UILabel!
     @IBOutlet weak var matchTimeLabel: UILabel!
@@ -19,7 +18,6 @@ class LatestEventsCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         self.contentView.backgroundColor = .cellColor
     }

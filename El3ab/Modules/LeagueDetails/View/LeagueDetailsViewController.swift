@@ -10,16 +10,17 @@ import Alamofire
 class LeagueDetailsViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    func configureSelectedLeague(league:Leagues){
-        //presenter.fetchData() or presenter = Presenter()
-        print(league.leagueName)
+    private var selectedLeague: Leagues?
+      private var currentSport: Sport = .football
+    func configureSelectedLeague(league: Leagues, sport: Sport) {
+        self.selectedLeague = league
+        self.currentSport = sport
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let favouriteButton = UIBarButtonItem(image: UIImage(systemName: "heart") , style: UIBarButtonItem.Style.plain, target: self, action: #selector (favouriteTapped))
         navigationItem.rightBarButtonItem = favouriteButton
-        print("🚀 ViewDidLoad has started!") // ايوا ال AI
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -36,15 +37,7 @@ class LeagueDetailsViewController: UIViewController {
             withReuseIdentifier: SectionHeaderView.identifier
         )
         
-        
-        AF.request("https://httpbin.org/get").response { response in
-                    if let statusCode = response.response?.statusCode {
-                        print("✅ Alamofire is working! Status code: \(statusCode)")
-                    } else if let error = response.error {
-                        print("❌ Alamofire request failed: \(error.localizedDescription)")
-                    }
-            }
-        // Do any additional setup after loading the view.
+    
     }
     @objc func favouriteTapped(){
         print("save to core data...")

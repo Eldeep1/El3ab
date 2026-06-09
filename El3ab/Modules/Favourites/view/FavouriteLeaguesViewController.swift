@@ -34,22 +34,15 @@ class FavouriteLeaguesViewController: UIViewController {
         leaguesTableView.separatorStyle = .none
         leaguesTableView.dataSource = self
         leaguesTableView.delegate = self
-        AF.request("https://httpbin.org/get").response { response in
-                    if let statusCode = response.response?.statusCode {
-                        print("✅ Alamofire is working! Status code: \(statusCode)")
-                    } else if let error = response.error {
-                        print("❌ Alamofire request failed: \(error.localizedDescription)")
-                    }
-                }
+ 
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//      Get the new view controller using segue.destination.
-//      Pass the selected object to the new view controller.
         if segue.identifier == "FavouritesLeaguesToLeagueDetails" {
             let LeagueDetailsVC = segue.destination as! LeagueDetailsViewController
             if let league = sender as? Leagues {
-                LeagueDetailsVC.configureSelectedLeague(league: league)
+                //todo this should open the correct sport name not always football
+                LeagueDetailsVC.configureSelectedLeague(league: league, sport: .football)
             }
         }
     }

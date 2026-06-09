@@ -25,7 +25,6 @@ class FavouriteLeaguesPresenter : FavouriteLeaguesPresenterProtocol{
     }
     
     func getFavourites(){
-        //fetch it from core data
         data = [
             Leagues(
                 leagueKey: 3,

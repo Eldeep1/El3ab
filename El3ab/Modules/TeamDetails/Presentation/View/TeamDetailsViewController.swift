@@ -212,7 +212,6 @@ class TeamDetailsViewController: UIViewController {
     }
     
     private func loadSampleData() {
-           // Sample players data
            let players = [
                Player(name: "Lionel Messi", imageName: "player1", position: "Forward", number: 10),
                Player(name: "Cristiano Ronaldo", imageName: "player2", position: "Forward", number: 7),
@@ -220,7 +219,6 @@ class TeamDetailsViewController: UIViewController {
                Player(name: "Kylian Mbappé", imageName: "player4", position: "Forward", number: 7)
            ]
            
-           // Sample coaches data
            let coaches = [
                Coach(name: "Pep Guardiola", imageName: "coach1", role: "Head Coach"),
                Coach(name: "Juanma Lillo", imageName: "coach2", role: "Assistant Coach")
