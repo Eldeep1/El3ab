@@ -16,7 +16,7 @@ class TeamsCollectionViewCell: UICollectionViewCell {
     }
     func configure(team: Team) {
         let label = team.name
-       
+        teamNameLabel.text = label
         if let url = URL(string: team.logoImageName) {
             teamLogoImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder_logo"))
         } else {

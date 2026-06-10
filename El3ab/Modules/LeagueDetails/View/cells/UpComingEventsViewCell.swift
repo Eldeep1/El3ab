@@ -34,13 +34,13 @@ class UpComingEventsViewCell: UICollectionViewCell {
             if let homeLogoUrl = event.homeTeamLogo, let url = URL(string: homeLogoUrl) {
                 teamLogoImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder_logo"))
             } else {
-                teamLogoImageView.image = UIImage(named: "placeholder_logo")
+                teamLogoImageView.image = UIImage(systemName: "calendar.badge.exclamationmark")
             }
             
             if let awayLogoUrl = event.awayTeamLogo, let url = URL(string: awayLogoUrl) {
                 enemyLogoImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder_logo"))
             } else {
-                enemyLogoImageView.image = UIImage(named: "placeholder_logo")
+                enemyLogoImageView.image = UIImage(systemName: "calendar.badge.exclamationmark")
             }
         }
 
