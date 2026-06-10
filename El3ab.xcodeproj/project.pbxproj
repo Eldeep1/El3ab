@@ -50,6 +50,7 @@
 		B84685A32FD69F5B00EED429 /* LeagueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B846859D2FD69F5B00EED429 /* LeagueTableViewCell.xib */; };
 		B84E48992FD3E6B00007E287 /* LeaaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */; };
 		B84E489A2FD3E6B00007E287 /* LeaguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */; };
+		B85CFD4C2FDA083A009F522B /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85CFD4B2FDA083A009F522B /* NetworkServiceTests.swift */; };
 		B886568D2FD6E22800FFF38A /* LeagueDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B886568C2FD6E22800FFF38A /* LeagueDetailsPresenter.swift */; };
 		B8870FEC2FD9FC8D00E2F8B9 /* ToastMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8870FEB2FD9FC8D00E2F8B9 /* ToastMaker.swift */; };
 		B8886B052FD6664000BDAC0F /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8886B042FD6664000BDAC0F /* SectionHeaderView.swift */; };
@@ -123,6 +124,7 @@
 		B846859D2FD69F5B00EED429 /* LeagueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueTableViewCell.xib; sourceTree = "<group>"; };
 		B84E48932FD3E6B00007E287 /* LeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesPresenter.swift; sourceTree = "<group>"; };
 		B84E48952FD3E6B00007E287 /* LeaaguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaaguesViewController.swift; sourceTree = "<group>"; };
+		B85CFD4B2FDA083A009F522B /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		B886568C2FD6E22800FFF38A /* LeagueDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsPresenter.swift; sourceTree = "<group>"; };
 		B8870FEB2FD9FC8D00E2F8B9 /* ToastMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMaker.swift; sourceTree = "<group>"; };
 		B8886B042FD6664000BDAC0F /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 			children = (
 				18BC7D982FD1A20E006825B8 /* El3abTests.swift */,
 				18BC7D9A2FD1A20E006825B8 /* Info.plist */,
+				B85CFD4B2FDA083A009F522B /* NetworkServiceTests.swift */,
 			);
 			path = El3abTests;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B85CFD4C2FDA083A009F522B /* NetworkServiceTests.swift in Sources */,
 				18BC7D992FD1A20E006825B8 /* El3abTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
