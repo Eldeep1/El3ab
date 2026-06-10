@@ -2,15 +2,15 @@
 //  FavouriteLeaguesViewController.swift
 //  El3ab
 //
-//  Created by depo on 07/06/2026.
-//
 
 import UIKit
-import Alamofire
-protocol FavouriteLeaguesViewProtocol{
+import Network
+
+protocol FavouriteLeaguesViewProtocol: AnyObject {
     func reloadFavourites()
     func showInternetError()
-    
+    func showSuccessMessage(message: String)
+    func showErrorMessage(message: String)
 }
 
 class FavouriteLeaguesViewController: UIViewController {
@@ -18,7 +18,9 @@ class FavouriteLeaguesViewController: UIViewController {
     @IBOutlet weak var leaguesTableView: UITableView!
     let indicator = UIActivityIndicatorView(style: .large)
     
-    var presenter:FavouriteLeaguesPresenterProtocol?
+    var presenter: FavouriteLeaguesPresenter?
+    private let monitor = NWPathMonitor()
+    private var isConnected = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,86 +36,205 @@ class FavouriteLeaguesViewController: UIViewController {
         leaguesTableView.separatorStyle = .none
         leaguesTableView.dataSource = self
         leaguesTableView.delegate = self
- 
         
+        startMonitoringNetwork()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.loadFavourites()
+    }
+    
+    private func startMonitoringNetwork() {
+        monitor.pathUpdateHandler = { [weak self] path in
+            DispatchQueue.main.async {
+                self?.isConnected = path.status == .satisfied
+            }
+        }
+        let queue = DispatchQueue(label: "NetworkMonitor")
+        monitor.start(queue: queue)
+    }
+    
+    private func checkInternetAndNavigate(league: Leagues) {
+        if isConnected {
+            performSegue(withIdentifier: "FavouritesLeaguesToLeagueDetails", sender: league)
+        } else {
+            showNoInternetAlert()
+        }
+    }
+    
+    private func showNoInternetAlert() {
+        let alert = UIAlertController(
+            title: "No Internet Connection",
+            message: "Please check your internet connection and try again.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FavouritesLeaguesToLeagueDetails" {
-            let LeagueDetailsVC = segue.destination as! LeagueDetailsViewController
-            if let league = sender as? Leagues {
-                //todo this should open the correct sport name not always football
-                LeagueDetailsVC.configureSelectedLeague(league: league, sport: .football)
+            if let leagueDetailsVC = segue.destination as? LeagueDetailsViewController,
+               let league = sender as? Leagues {
+                let sport = getSportEnum(from: league.sportName)
+                leagueDetailsVC.configureSelectedLeague(league: league, sport: sport)
             }
+        }
+    }
+    
+    private func getSportEnum(from sportName: String?) -> Sport {
+        guard let sportName = sportName else { return .football }
+        
+        switch sportName.lowercased() {
+        case "football":
+            return .football
+        case "basketball":
+            return .basketball
+        case "tennis":
+            return .tennis
+        case "cricket":
+            return .cricket
+        default:
+            return .football
         }
     }
 }
 
-extension FavouriteLeaguesViewController :FavouriteLeaguesViewProtocol{
+extension FavouriteLeaguesViewController: FavouriteLeaguesViewProtocol {
     func reloadFavourites() {
         leaguesTableView.reloadData()
+        
+        if presenter?.getFavouritesCount() == 0 {
+            showEmptyState()
+        } else {
+            removeEmptyState()
+        }
     }
     
     func showInternetError() {
-        //TODO: show alert Dialoguge
+        let alert = UIAlertController(
+            title: "Network Error",
+            message: "Please check your internet connection and try again.",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    func showSuccessMessage(message: String) {
+        let alert = UIAlertController(
+            title: "Success",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    func showErrorMessage(message: String) {
+        let alert = UIAlertController(
+            title: "Error",
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
+    private func showEmptyState() {
+        let emptyLabel = UILabel()
+        emptyLabel.text = "No favorite leagues yet.\nAdd some from the leagues screen!"
+        emptyLabel.numberOfLines = 0
+        emptyLabel.textAlignment = .center
+        emptyLabel.textColor = .gray
+        emptyLabel.font = .systemFont(ofSize: 16)
+        leaguesTableView.backgroundView = emptyLabel
+    }
+    
+    private func removeEmptyState() {
+        leaguesTableView.backgroundView = nil
     }
 }
 
-extension FavouriteLeaguesViewController : UITableViewDelegate,UITableViewDataSource{
+extension FavouriteLeaguesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-       return presenter?.getFavouritesCount() ?? 0
+        return presenter?.getFavouritesCount() ?? 0
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 105
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let league = presenter?.getFavouriteLeagueItem(index: indexPath.row)
-         let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell", for: indexPath) as! LeagueTableViewCell
-            
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LeagueCell", for: indexPath) as! LeagueTableViewCell
+        
         cell.leagueCountry.text = league?.countryName
-//        cell.leagueImageView =
-        cell.leagueTitle.text=league?.leagueName
+        cell.leagueTitle.text = league?.leagueName
+        if let logoUrl = league?.leagueLogo, let url = URL(string: logoUrl) {
+            cell.leagueImageView.kf.setImage(
+                with: url,
+                placeholder: UIImage(systemName: "sportscourt"),
+                options: [
+                    .transition(.fade(0.2)),
+                    .cacheOriginalImage
+                ]
+            ) { result in
+                switch result {
+                case .success:
+                    break
+                case .failure:
+                    cell.leagueImageView.image = UIImage(systemName: "sportscourt")
+                    cell.leagueImageView.tintColor = .gray
+                }
+            }
+        } else {
+            cell.leagueImageView.image = UIImage(systemName: "sportscourt")
+            cell.leagueImageView.tintColor = .gray
+        }
         
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let league = presenter?.getFavouriteLeagueItem(index: indexPath.row)
-        performSegue(withIdentifier: "FavouritesLeaguesToLeagueDetails", sender: league)
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        guard let league = presenter?.getFavouriteLeagueItem(index: indexPath.row) else { return }
+        
+        checkInternetAndNavigate(league: league)
     }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler:{
-            [weak self](action, view, completionHandler) in
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, completionHandler) in
             
-            let alert = UIAlertController(title: "Delete League", message: "Are You Sure You Want To Delete This League From Favourites?", preferredStyle: .alert)
+            let alert = UIAlertController(
+                title: "Delete League",
+                message: "Are you sure you want to delete this league from favorites?",
+                preferredStyle: .alert
+            )
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: {
-                _ in completionHandler(false)
-            })
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                completionHandler(false)
+            }
             
-            let confirmAction = UIAlertAction(title: "Delte", style: .destructive, handler: {_ in
+            let confirmAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
                 self?.presenter?.removeFavourite(at: indexPath.row)
                 completionHandler(true)
-            })
+            }
             
             alert.addAction(cancelAction)
             alert.addAction(confirmAction)
             
-            self?.present(alert,animated: true,completion: nil)
-            
-        } )
+            self?.present(alert, animated: true)
+        }
         
         deleteAction.image = UIImage(systemName: "trash.fill")
         
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        
         configuration.performsFirstActionWithFullSwipe = false
         
         return configuration
-        
     }
-    
-    
 }
-

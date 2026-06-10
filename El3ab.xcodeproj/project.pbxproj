@@ -15,6 +15,7 @@
 		181A881A2FD88596001F6485 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 181A88192FD88596001F6485 /* Kingfisher */; };
 		182CD3C72FD6B32700752ABF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 182CD3C62FD6B32700752ABF /* Alamofire */; };
 		184D7C5C2FD946080021C8E8 /* TeamDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D7C5B2FD946080021C8E8 /* TeamDetailsPresenter.swift */; };
+		184D7CA52FD9AA600021C8E8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D7CA42FD9AA600021C8E8 /* CoreDataManager.swift */; };
 		185A36AB2FD49F3500513D24 /* TeamMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A36AA2FD49F3500513D24 /* TeamMemberCell.swift */; };
 		185A36AD2FD49F9000513D24 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185A36AC2FD49F9000513D24 /* TeamDetailsViewController.swift */; };
 		187C271F2FD305690097E204 /* SportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C271E2FD305690097E204 /* SportsViewController.swift */; };
@@ -77,6 +78,7 @@
 		181A88142FD869C3001F6485 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		181A88162FD86AA0001F6485 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		184D7C5B2FD946080021C8E8 /* TeamDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsPresenter.swift; sourceTree = "<group>"; };
+		184D7CA42FD9AA600021C8E8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		185A36AA2FD49F3500513D24 /* TeamMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberCell.swift; sourceTree = "<group>"; };
 		185A36AC2FD49F9000513D24 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		1868C37B2FD472A50098C577 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			children = (
 				181A88132FD8691B001F6485 /* Network */,
 				181A88082FD86335001F6485 /* Constants.swift */,
+				184D7CA42FD9AA600021C8E8 /* CoreDataManager.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				187C27242FD3162C0097E204 /* UIColors.swift in Sources */,
 				18BC7D832FD1A20C006825B8 /* ViewController.swift in Sources */,
 				181A88152FD869C3001F6485 /* APIRouter.swift in Sources */,
+				184D7CA52FD9AA600021C8E8 /* CoreDataManager.swift in Sources */,
 				B8267D502FD5E2E7003AAA39 /* LeagueDetailsViewController.swift in Sources */,
 				18BC7D892FD1A20C006825B8 /* El3ab.xcdatamodeld in Sources */,
 				185A36AB2FD49F3500513D24 /* TeamMemberCell.swift in Sources */,

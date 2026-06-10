@@ -38,7 +38,8 @@ struct LeagueAPI: Codable {
             leagueName: leagueName,
             countryName: countryName,
             leagueLogo: leagueLogo ?? "",
-            countryLogo: countryLogo
+            countryLogo: countryLogo,
+            sportName: ""
         )
     }
 }
