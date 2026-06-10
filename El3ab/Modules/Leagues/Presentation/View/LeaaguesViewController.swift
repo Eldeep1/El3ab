@@ -103,14 +103,17 @@ extension LeaguesViewController: LeaguesViewProtocol {
     }
     
     func navigateToDetails(with league: Leagues) {
-        // Navigate to LeagueDetailsViewController
+        
+        navigationItem.backButtonDisplayMode = .minimal
+        navigationController?.navigationBar.barTintColor = .cellColor
+        navigationController?.navigationBar.tintColor = .systemGreen
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let leagueDetailsVC = storyboard.instantiateViewController(withIdentifier: "LeagueDetailsViewController") as? LeagueDetailsViewController {
             leagueDetailsVC.configureSelectedLeague(league: league, sport: selectedSport)
             leagueDetailsVC.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(leagueDetailsVC, animated: true)
         } else {
-            // If storyboard doesn't have it, create programmatically
             let leagueDetailsVC = LeagueDetailsViewController()
             leagueDetailsVC.configureSelectedLeague(league: league, sport: selectedSport)
             leagueDetailsVC.hidesBottomBarWhenPushed = true

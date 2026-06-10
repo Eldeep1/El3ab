@@ -57,7 +57,18 @@ class FavouriteLeaguesViewController: UIViewController {
     
     private func checkInternetAndNavigate(league: Leagues) {
         if isConnected {
-            performSegue(withIdentifier: "FavouritesLeaguesToLeagueDetails", sender: league)
+            let leaguesDetailsVC =
+            storyboard?.instantiateViewController(
+                withIdentifier: "LeagueDetailsViewController"
+            ) as! LeagueDetailsViewController
+            let sport = getSportEnum(from: league.sportName)
+            leaguesDetailsVC.configureSelectedLeague(league: league, sport: sport)
+            leaguesDetailsVC.hidesBottomBarWhenPushed = true
+            navigationItem.backButtonDisplayMode = .minimal
+            navigationController?.navigationBar.barTintColor = .cellColor
+            navigationController?.navigationBar.tintColor = .systemGreen
+
+            navigationController?.pushViewController(leaguesDetailsVC, animated: true)
         } else {
             showNoInternetAlert()
         }
@@ -73,15 +84,6 @@ class FavouriteLeaguesViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "FavouritesLeaguesToLeagueDetails" {
-            if let leagueDetailsVC = segue.destination as? LeagueDetailsViewController,
-               let league = sender as? Leagues {
-                let sport = getSportEnum(from: league.sportName)
-                leagueDetailsVC.configureSelectedLeague(league: league, sport: sport)
-            }
-        }
-    }
     
     private func getSportEnum(from sportName: String?) -> Sport {
         guard let sportName = sportName else { return .football }

@@ -52,7 +52,7 @@ class LeagueDetailsViewController: UIViewController {
         view.addSubview(activityIndicator)
         presenter?.fetchLeagueData()
         presenter?.checkIfFavourite()
-
+        navigationItem.title = presenter?.getLeagueName()
     }
     @objc func favouriteTapped(){
         presenter?.addToFavourite()
@@ -77,14 +77,13 @@ class LeagueDetailsViewController: UIViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        // Fixed width/height for the horizontal card
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(180), heightDimension: .absolute(160))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 16
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 16, bottom: 24, trailing: 16)
-        section.orthogonalScrollingBehavior = .continuous // Enforces horizontal scrolling
+        section.orthogonalScrollingBehavior = .continuous
         
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
@@ -154,16 +153,6 @@ class LeagueDetailsViewController: UIViewController {
         
         return section
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension LeagueDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -282,6 +271,8 @@ extension LeagueDetailsViewController: LeagueDetailsViewControllerProtocol {
     func navigateToTeamDetails(with teamId: String, sport: Sport) {
         let detailsVC = TeamDetailsViewController()
         detailsVC.configure(with: teamId, sport: sport)
+        navigationItem.backButtonDisplayMode = .minimal
+
         navigationController?.pushViewController(detailsVC, animated: true)
     }
     func showToast(message : String, font: UIFont) {

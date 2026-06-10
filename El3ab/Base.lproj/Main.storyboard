@@ -10,27 +10,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="230" y="766"/>
-        </scene>
         <!--Team Details View Controller-->
         <scene sceneID="JAg-kI-baQ">
             <objects>
                 <viewController storyboardIdentifier="TeamDetailsViewController" id="A72-3F-vjz" customClass="TeamDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tw6-Kp-jJY">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Obe-AI-fTo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -39,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrS-Lp-Saq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618" y="-1698"/>
+            <point key="canvasLocation" x="2103" y="-329"/>
         </scene>
         <!--Favourite Leagues View Controller-->
         <scene sceneID="6Kf-1D-r97">
@@ -107,23 +92,22 @@
                     <navigationItem key="navigationItem" id="CrJ-Zw-9GP"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="Kf2-dW-i6x" id="UdK-Dh-Zbh"/>
-                        <segue destination="C6q-Zc-o9q" kind="show" identifier="FavouritesLeaguesToLeagueDetails" id="IwC-U0-Vxg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xlx-Tm-YVz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="933.48837209302326" y="-236.26609442060087"/>
+            <point key="canvasLocation" x="294" y="-218"/>
         </scene>
         <!--League Details View Controller-->
         <scene sceneID="tjA-eE-srh">
             <objects>
                 <viewController storyboardIdentifier="LeagueDetailsViewController" id="C6q-Zc-o9q" customClass="LeagueDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZA5-bj-RCm">
-                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="863"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97q-3q-mb1">
-                                <rect key="frame" x="0.0" y="162" width="430" height="653"/>
+                                <rect key="frame" x="0.0" y="59" width="430" height="804"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="BiU-g2-bOZ"/>
                                 <cells>
@@ -155,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lL6-dm-f1t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-747" y="-1698"/>
+            <point key="canvasLocation" x="1189" y="-47"/>
         </scene>
         <!--El3ab-->
         <scene sceneID="TMl-mY-ZCv">
@@ -172,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lND-gO-S0q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="782" y="-1004"/>
+            <point key="canvasLocation" x="294" y="-1001"/>
         </scene>
         <!--Leagues View Controller-->
         <scene sceneID="UDl-Av-Uzn">
@@ -204,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GtC-rF-778" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="-1001"/>
+            <point key="canvasLocation" x="1319" y="-870"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nAW-Cs-REq">
@@ -270,12 +254,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kH2-yG-P52" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="34.883720930232556" y="-236.26609442060087"/>
+            <point key="canvasLocation" x="-604" y="-218"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="IwC-U0-Vxg"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="sportscourt" catalog="system" width="128" height="83"/>

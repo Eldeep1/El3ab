@@ -18,6 +18,7 @@ protocol LeagueDetailsPresenterProtocol{
     func getTeamsCount()->Int
     func getTeam(at index:Int)->Team
     func checkIfFavourite()
+    func getLeagueName()->String
 }
 class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
     
@@ -175,4 +176,7 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
         view?.navigateToTeamDetails(with: String(team.teamID), sport: sport)
     }
     
+    func getLeagueName()->String{
+        league.leagueName
+    }
 }
