@@ -51,7 +51,8 @@ class LeagueDetailsViewController: UIViewController {
         activityIndicator.color = .gray
         view.addSubview(activityIndicator)
         presenter?.fetchLeagueData()
-    
+        presenter?.checkIfFavourite()
+
     }
     @objc func favouriteTapped(){
         presenter?.addToFavourite()

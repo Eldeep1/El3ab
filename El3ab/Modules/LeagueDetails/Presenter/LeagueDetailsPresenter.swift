@@ -17,6 +17,7 @@ protocol LeagueDetailsPresenterProtocol{
     func getLatestEvent(at index:Int) -> Event
     func getTeamsCount()->Int
     func getTeam(at index:Int)->Team
+    func checkIfFavourite()
 }
 class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
     
@@ -39,6 +40,11 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
         localDataStorage =  CoreDataManager.shared
     }
     
+    func checkIfFavourite(){
+        if localDataStorage.isLeagueFavorited(leagueKey: league.leagueKey){
+            view?.addToFavourite()
+        }
+    }
     func fetchLeagueData() {
 
         view?.showLoading()
