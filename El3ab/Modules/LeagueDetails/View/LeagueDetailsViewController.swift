@@ -15,6 +15,7 @@ protocol LeagueDetailsViewControllerProtocol: AnyObject {
     func showLoading()
     func hideLoading()
     func removeFromFavourite()
+    func showDeleteConfirmation()
 }
 class LeagueDetailsViewController: UIViewController {
     
@@ -244,6 +245,32 @@ extension LeagueDetailsViewController {
     }
 }
 extension LeagueDetailsViewController: LeagueDetailsViewControllerProtocol {
+    func showDeleteConfirmation() {
+        let alert = UIAlertController(
+               title: "Delete League",
+               message: "Are you sure you want to delete this league from favorites?",
+               preferredStyle: .alert
+           )
+
+           let cancelAction = UIAlertAction(
+               title: "Cancel",
+               style: .cancel
+           )
+
+           let confirmAction = UIAlertAction(
+               title: "Delete",
+               style: .destructive
+           ) {  _ in
+               self.presenter?.confirmDeleteLeague()
+           }
+
+           alert.addAction(cancelAction)
+           alert.addAction(confirmAction)
+
+           present(alert, animated: true)
+
+    }
+    
     func addToFavourite() {
         let favouriteButton = UIBarButtonItem(image: UIImage(systemName: "heart.fill") , style: UIBarButtonItem.Style.plain, target: self, action: #selector (favouriteTapped))
         navigationItem.rightBarButtonItem = favouriteButton

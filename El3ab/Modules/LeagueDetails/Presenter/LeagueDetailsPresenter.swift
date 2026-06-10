@@ -19,6 +19,7 @@ protocol LeagueDetailsPresenterProtocol{
     func getTeam(at index:Int)->Team
     func checkIfFavourite()
     func getLeagueName()->String
+    func confirmDeleteLeague()
 }
 class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
     
@@ -140,12 +141,18 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
             view?.addToFavourite()
         }
         else{
-            if localDataStorage.deleteFavoriteLeague(leagueKey: league.leagueKey){
-                view?.removeFromFavourite()
-            }
+            view?.showDeleteConfirmation()
         }
     }
-    
+    func confirmDeleteLeague() {
+
+        if localDataStorage.deleteFavoriteLeague(
+            leagueKey: league.leagueKey
+        ) {
+
+            view?.removeFromFavourite()
+        }
+    }
     
     
     func getUpComingEventsCount() -> Int {
