@@ -16,6 +16,7 @@ protocol LeagueDetailsViewControllerProtocol: AnyObject {
     func hideLoading()
     func removeFromFavourite()
     func showDeleteConfirmation()
+    func updateFavouriteButton(isFavourite: Bool)
 }
 class LeagueDetailsViewController: UIViewController {
     
@@ -242,6 +243,21 @@ extension LeagueDetailsViewController {
     }
 }
 extension LeagueDetailsViewController: LeagueDetailsViewControllerProtocol {
+    func updateFavouriteButton(isFavourite: Bool) {
+
+        let imageName = isFavourite
+            ? "heart.fill"
+            : "heart"
+
+        let favouriteButton = UIBarButtonItem(
+            image: UIImage(systemName: imageName),
+            style: .plain,
+            target: self,
+            action: #selector(favouriteTapped)
+        )
+
+        navigationItem.rightBarButtonItem = favouriteButton
+    }
     func showDeleteConfirmation() {
         let alert = UIAlertController(
                title: "Delete League",
@@ -269,16 +285,23 @@ extension LeagueDetailsViewController: LeagueDetailsViewControllerProtocol {
     }
     
     func addToFavourite() {
-        let favouriteButton = UIBarButtonItem(image: UIImage(systemName: "heart.fill") , style: UIBarButtonItem.Style.plain, target: self, action: #selector (favouriteTapped))
-        navigationItem.rightBarButtonItem = favouriteButton
-        showToast(message: "Added To Favourites", font: .systemFont(ofSize: 14.0))
+
+        updateFavouriteButton(isFavourite: true)
+
+        showToast(
+            message: "Added To Favourites",
+            font: .systemFont(ofSize: 14.0)
+        )
     }
 
-    func removeFromFavourite(){
-        showToast(message: "Removed From Favourites", font: .systemFont(ofSize: 14.0))
+    func removeFromFavourite() {
 
-        let favouriteButton = UIBarButtonItem(image: UIImage(systemName: "heart") , style: UIBarButtonItem.Style.plain, target: self, action: #selector (favouriteTapped))
-        navigationItem.rightBarButtonItem = favouriteButton
+        updateFavouriteButton(isFavourite: false)
+
+        showToast(
+            message: "Removed From Favourites",
+            font: .systemFont(ofSize: 14.0)
+        )
     }
     
     func showData() {
