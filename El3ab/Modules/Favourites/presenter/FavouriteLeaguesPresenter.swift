@@ -16,15 +16,16 @@ class FavouriteLeaguesPresenter : FavouriteLeaguesPresenterProtocol{
     
     weak var view : FavouriteLeaguesViewProtocol?
     var data: [Leagues]?
-    private let coreDataManager = CoreDataManager.shared
+    private let localDataStorage : LocalStorageProtocol
 
     init(view: FavouriteLeaguesViewProtocol? = nil) {
         self.view = view
+        localDataStorage =  CoreDataManager.shared
         loadFavourites()
     }
     
     func loadFavourites() {  
-        data = coreDataManager.getAllFavoriteLeagues()
+        data = localDataStorage.getAllFavoriteLeagues()
         view?.reloadFavourites()
     }
     
@@ -42,7 +43,7 @@ class FavouriteLeaguesPresenter : FavouriteLeaguesPresenterProtocol{
     func removeFavourite(at index: Int) {
         guard let league = data?[index] else { return }
         
-        let success = coreDataManager.deleteFavoriteLeague(leagueKey: league.leagueKey)
+        let success = localDataStorage.deleteFavoriteLeague(leagueKey: league.leagueKey)
         
         if success {
             data?.remove(at: index)

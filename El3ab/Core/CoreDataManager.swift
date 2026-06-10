@@ -7,7 +7,14 @@ import Foundation
 import CoreData
 import UIKit
 
-class CoreDataManager {
+protocol LocalStorageProtocol{
+    func addFavoriteLeague(league: Leagues, sportName: String) -> Bool
+    func isLeagueFavorited(leagueKey: Int) -> Bool
+    func deleteFavoriteLeague(leagueKey: Int) -> Bool
+    func getAllFavoriteLeagues() -> [Leagues]
+    func getFavoritesCount() -> Int
+}
+class CoreDataManager : LocalStorageProtocol {
     
     static let shared = CoreDataManager()
     
