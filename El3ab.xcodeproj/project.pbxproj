@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -365,19 +365,19 @@
 		B8267D492FD5D4EA003AAA39 /* LeagueDetails */ = {
 			isa = PBXGroup;
 			children = (
-				B8267D4B2FD5D502003AAA39 /* Presentation */,
+				B8267D4B2FD5D502003AAA39 /* Presenter */,
 				B8267D482FD5D4EA003AAA39 /* View */,
 				B84081AF2FD8D097005ABE2C /* Event.swift */,
 			);
 			path = LeagueDetails;
 			sourceTree = "<group>";
 		};
-		B8267D4B2FD5D502003AAA39 /* Presentation */ = {
+		B8267D4B2FD5D502003AAA39 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
 				B886568C2FD6E22800FFF38A /* LeagueDetailsPresenter.swift */,
 			);
-			path = Presentation;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		B84685942FD69F5600EED429 /* presenter */ = {
