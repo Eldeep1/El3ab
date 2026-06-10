@@ -44,7 +44,10 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
     
     func checkIfFavourite(){
         if localDataStorage.isLeagueFavorited(leagueKey: league.leagueKey){
-            view?.addToFavourite()
+            view?.updateFavouriteButton(isFavourite: true)
+        }
+        else{
+            view?.updateFavouriteButton(isFavourite: false)
         }
     }
     func fetchLeagueData() {
