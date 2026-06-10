@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,6 +38,8 @@
 		B83E1A622FD4AF07008599E4 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E1A612FD4AF07008599E4 /* Team.swift */; };
 		B83E1A632FD4AF07008599E4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E1A602FD4AF07008599E4 /* Player.swift */; };
 		B83E1A642FD4AF07008599E4 /* Coach.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E1A5F2FD4AF07008599E4 /* Coach.swift */; };
+		B84081B02FD8D097005ABE2C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84081AF2FD8D097005ABE2C /* Event.swift */; };
+		B84081B22FD8D10F005ABE2C /* EventResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84081B12FD8D10F005ABE2C /* EventResponse.swift */; };
 		B84685922FD69F4500EED429 /* LeagueSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84685902FD69F4500EED429 /* LeagueSections.swift */; };
 		B84685982FD69F5600EED429 /* FavouriteLeaguesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84685932FD69F5600EED429 /* FavouriteLeaguesPresenter.swift */; };
 		B84685992FD69F5600EED429 /* FavouriteLeaguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84685952FD69F5600EED429 /* FavouriteLeaguesViewController.swift */; };
@@ -106,6 +108,8 @@
 		B83E1A5F2FD4AF07008599E4 /* Coach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coach.swift; sourceTree = "<group>"; };
 		B83E1A602FD4AF07008599E4 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B83E1A612FD4AF07008599E4 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		B84081AF2FD8D097005ABE2C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		B84081B12FD8D10F005ABE2C /* EventResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventResponse.swift; sourceTree = "<group>"; };
 		B84685902FD69F4500EED429 /* LeagueSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueSections.swift; sourceTree = "<group>"; };
 		B84685932FD69F5600EED429 /* FavouriteLeaguesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLeaguesPresenter.swift; sourceTree = "<group>"; };
 		B84685952FD69F5600EED429 /* FavouriteLeaguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteLeaguesViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 		181A88122FD86848001F6485 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				B84081B12FD8D10F005ABE2C /* EventResponse.swift */,
 				B846859A2FD69F5B00EED429 /* League.swift */,
 				181A880C2FD8668E001F6485 /* TeamResponse.swift */,
 			);
@@ -348,6 +353,7 @@
 			children = (
 				B8267D4B2FD5D502003AAA39 /* Presentation */,
 				B8267D482FD5D4EA003AAA39 /* View */,
+				B84081AF2FD8D097005ABE2C /* Event.swift */,
 			);
 			path = LeagueDetails;
 			sourceTree = "<group>";
@@ -618,6 +624,7 @@
 				B84685922FD69F4500EED429 /* LeagueSections.swift in Sources */,
 				181A88112FD867A8001F6485 /* Leagues.swift in Sources */,
 				B83E1A622FD4AF07008599E4 /* Team.swift in Sources */,
+				B84081B02FD8D097005ABE2C /* Event.swift in Sources */,
 				181A880D2FD8668E001F6485 /* TeamResponse.swift in Sources */,
 				181A88172FD86AA0001F6485 /* NetworkServiceProtocol.swift in Sources */,
 				B83E1A632FD4AF07008599E4 /* Player.swift in Sources */,
@@ -635,6 +642,7 @@
 				18BC7D812FD1A20C006825B8 /* SceneDelegate.swift in Sources */,
 				B84685A12FD69F5B00EED429 /* League.swift in Sources */,
 				B84685A22FD69F5B00EED429 /* LeagueTableViewCell.swift in Sources */,
+				B84081B22FD8D10F005ABE2C /* EventResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
