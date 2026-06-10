@@ -51,10 +51,11 @@ class LeagueDetailsViewController: UIViewController {
         activityIndicator.color = .gray
         view.addSubview(activityIndicator)
         presenter?.fetchLeagueData()
-    
+        presenter?.checkIfFavourite()
+
     }
     @objc func favouriteTapped(){
-        print("save to core data...")
+        presenter?.addToFavourite()
     }
     private func createCompositionalLayout() -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
@@ -255,11 +256,12 @@ extension LeagueDetailsViewController {
 }
 extension LeagueDetailsViewController: LeagueDetailsViewControllerProtocol {
     func addToFavourite() {
-        
+        let favouriteButton = UIBarButtonItem(image: UIImage(systemName: "heart.fill") , style: UIBarButtonItem.Style.plain, target: self, action: #selector (favouriteTapped))
+        navigationItem.rightBarButtonItem = favouriteButton
     }
     
     func existsInVafourite() {
-        
+        self.showToast(message: "Already In Favourites", font: .systemFont(ofSize: 14.0))
     }
     
     func showData() {
@@ -281,5 +283,23 @@ extension LeagueDetailsViewController: LeagueDetailsViewControllerProtocol {
         let detailsVC = TeamDetailsViewController()
         detailsVC.configure(with: teamId, sport: sport)
         navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    func showToast(message : String, font: UIFont) {
+
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.font = font
+        toastLabel.textAlignment = .center;
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+             toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
     }
 }

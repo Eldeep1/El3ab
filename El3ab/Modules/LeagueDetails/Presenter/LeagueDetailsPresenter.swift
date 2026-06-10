@@ -8,7 +8,7 @@
 import Foundation
 
 protocol LeagueDetailsPresenterProtocol{
-    func addToFavourite(leageu:Leagues)
+    func addToFavourite()
     func didSelectTeam(at index:Int) //used
     func fetchLeagueData()
     func getUpComingEventsCount()->Int
@@ -17,6 +17,7 @@ protocol LeagueDetailsPresenterProtocol{
     func getLatestEvent(at index:Int) -> Event
     func getTeamsCount()->Int
     func getTeam(at index:Int)->Team
+    func checkIfFavourite()
 }
 class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
     
@@ -29,13 +30,20 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
     private let networkService: NetworkServiceProtocol
     private let today = Date()
     private let calendar = Calendar.current
-    
+    private let localDataStorage : LocalStorageProtocol
+
     init(view: LeagueDetailsViewControllerProtocol, sport: Sport, league: Leagues, networkService: NetworkServiceProtocol = NetworkService.shared) {
         self.view = view
         self.sport = sport
         self.league = league
         self.networkService=networkService
-        
+        localDataStorage =  CoreDataManager.shared
+    }
+    
+    func checkIfFavourite(){
+        if localDataStorage.isLeagueFavorited(leagueKey: league.leagueKey){
+            view?.addToFavourite()
+        }
     }
     func fetchLeagueData() {
 
@@ -126,8 +134,13 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
     }
     
     
-    func addToFavourite(leageu: Leagues) {
-        //need core data, so will deny it for now
+    func addToFavourite() {
+        if localDataStorage.addFavoriteLeague(league: league, sportName: sport.rawValue) == true{
+            view?.addToFavourite()
+        }
+        else{
+            view?.existsInVafourite()
+        }
     }
     
     

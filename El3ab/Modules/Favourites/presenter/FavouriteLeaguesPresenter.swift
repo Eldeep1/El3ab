@@ -2,82 +2,56 @@
 //  FavouriteLeaguesPresenter.swift
 //  El3ab
 //
-//  Created by depo on 07/06/2026.
-//
 
 import Foundation
 
-protocol FavouriteLeaguesPresenterProtocol{
-    func getFavouritesCount()->Int
-    func getFavouriteLeagueItem(index:Int)->Leagues
-    func removeFavourite(at index : Int)
-    func leagueDetails(at index : Int)
+protocol FavouriteLeaguesPresenterProtocol {
+    func getFavouritesCount() -> Int
+    func getFavouriteLeagueItem(index: Int) -> Leagues
+    func removeFavourite(at index: Int)
+    func leagueDetails(at index: Int)
 }
 
 class FavouriteLeaguesPresenter : FavouriteLeaguesPresenterProtocol{
     
-    var view : FavouriteLeaguesViewProtocol?
-    var data:[Leagues]?
+    weak var view : FavouriteLeaguesViewProtocol?
+    var data: [Leagues]?
+    private let localDataStorage : LocalStorageProtocol
 
     init(view: FavouriteLeaguesViewProtocol? = nil) {
         self.view = view
-        getFavourites()
+        localDataStorage =  CoreDataManager.shared
+        loadFavourites()
     }
     
-    func getFavourites(){
-        data = [
-            Leagues(
-                leagueKey: 3,
-                leagueName: "UEFA Champions League",
-                countryName: "eurocups",
-                leagueLogo: "https://allsportsapi.com3_uefa_champions_league.png",
-                countryLogo: nil
-            ),
-            Leagues(
-                leagueKey: 3,
-                leagueName: "UEFA Champions League",
-                countryName: "eurocups",
-                leagueLogo: "https://allsportsapi.com3_uefa_champions_league.png",
-                countryLogo: nil
-            ),
-            Leagues(
-                leagueKey: 3,
-                leagueName: "UEFA Champions Leagueeeeeeeeeeeeeeeeee",
-                countryName: "eurocups",
-                leagueLogo: "https://allsportsapi.com3_uefa_champions_league.png",
-                countryLogo: nil
-            ),
-            Leagues(
-                leagueKey: 3,
-                leagueName: "UEFA Champions League",
-                countryName: "eurocups",
-                leagueLogo: "https://allsportsapi.com3_uefa_champions_league.png",
-                countryLogo: nil
-            ),
-        ]
-        
+    func loadFavourites() {  
+        data = localDataStorage.getAllFavoriteLeagues()
         view?.reloadFavourites()
     }
+    
     func getFavouritesCount() -> Int {
         data?.count ?? 0
     }
     
     func getFavouriteLeagueItem(index: Int) -> Leagues {
-        data![index]
+        guard let data = data, index < data.count else {
+            fatalError("Index out of range")
+        }
+        return data[index]
     }
     
-    
-    
-    
     func removeFavourite(at index: Int) {
-        // show warnning and do some core data logic
-        data?.remove(at: index)
-        view?.reloadFavourites()
+        guard let league = data?[index] else { return }
+        
+        let success = localDataStorage.deleteFavoriteLeague(leagueKey: league.leagueKey)
+        
+        if success {
+            data?.remove(at: index)
+            view?.reloadFavourites()
+        }
     }
     
     func leagueDetails(at index: Int) {
-        // call the navigation function from the UI
+        // This will be handled by the view controller
     }
-    
-    
 }
