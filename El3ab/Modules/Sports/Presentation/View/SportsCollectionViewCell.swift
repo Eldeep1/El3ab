@@ -69,9 +69,12 @@ class SportsCollectionViewCell: UICollectionViewCell {
             overlayView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
             
             sportLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            sportLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            
+            sportLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20),
+            
             sportLabel.leadingAnchor.constraint(greaterThanOrEqualTo: containerView.leadingAnchor, constant: 16),
-            sportLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -16)
+            sportLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -16
+                                                )
         ])
     }
     
@@ -81,7 +84,7 @@ class SportsCollectionViewCell: UICollectionViewCell {
     
     func configure(with sport: String) {
         sportLabel.text = sport
-        sportImageView.image = UIImage(named: "\(sport.lowercased())_icon") ?? UIImage(systemName: "sportscourt")
+        sportImageView.image = UIImage(named: "\(sport.lowercased())") ?? UIImage(systemName: "sportscourt")
     }
     
     override func prepareForReuse() {
