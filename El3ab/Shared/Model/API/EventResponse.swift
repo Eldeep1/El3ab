@@ -11,10 +11,11 @@ struct EventResponse: Codable {
 }
 
 struct EventAPI: Codable {
-    let eventKey, eventDate, eventTime, eventHomeTeam: String
-    let homeTeamKey, eventAwayTeam, awayTeamKey, eventHalftimeResult: String
+    let eventKey,awayTeamKey, homeTeamKey,leagueKey: Int
+    let eventDate, eventTime, eventHomeTeam: String
+    let  eventAwayTeam, eventHalftimeResult: String
     let eventFinalResult, eventStatus, countryName, leagueName: String
-    let leagueKey, leagueRound, leagueSeason, eventLive: String
+    let leagueRound, leagueSeason, eventLive: String
     let eventStadium, eventReferee: String
     let homeTeamLogo, awayTeamLogo: String
     let leagueLogo: String
@@ -48,7 +49,9 @@ struct EventAPI: Codable {
             eventTime: self.eventTime,
             homeTeamName: self.eventHomeTeam,
             enemyTeamName: self.eventAwayTeam, // Maps eventAwayTeam to enemyTeamName
-            finalResult: self.eventFinalResult
+            finalResult: self.eventFinalResult,
+            homeTeamLogo: self.homeTeamLogo,
+            awayTeamLogo: self.awayTeamLogo
         )
     }
 }
