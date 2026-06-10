@@ -14,17 +14,16 @@ protocol LeagueDetailsViewControllerProtocol: AnyObject {
     func existsInVafourite()
     func showData()
     func showLoading()
+    func hideLoading()
 }
 class LeagueDetailsViewController: UIViewController {
     
     var presenter:LeagueDetailsPresenterProtocol?
-    
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     @IBOutlet weak var collectionView: UICollectionView!
-    private var selectedLeague: Leagues?
-      private var currentSport: Sport = .football
+    
     func configureSelectedLeague(league: Leagues, sport: Sport) {
-        self.selectedLeague = league
-        self.currentSport = sport
+        presenter = LeagueDetailsPresenter(view:self , sport: sport, league: league)
     }
     
     override func viewDidLoad() {
@@ -47,6 +46,11 @@ class LeagueDetailsViewController: UIViewController {
             withReuseIdentifier: SectionHeaderView.identifier
         )
         
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .gray
+        view.addSubview(activityIndicator)
+        presenter?.getEvents()
     
     }
     @objc func favouriteTapped(){
@@ -169,21 +173,17 @@ extension LeagueDetailsViewController: UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(indexPath.section==2){
-//            presenter.didSelectTeam(at: indexPath.item)
-            let sampleTeamId = "96"
-            navigateToTeamDetails(with: sampleTeamId, sport: currentSport)
-            
+            presenter?.didSelectTeam(at: indexPath.item)
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        guard let sectionType = LeagueSections(rawValue: section) else { return 0 }
-//        switch sectionType {
-//        case .upcomingEvents: return presenter.getUpcomingEventsCount()
-//        case .latestEvents: return presenter.getLatestEventsCount()
-//        case .teams: return presenter.getTeamsCount()
-//        }
-        print("intersting actually")
-        return 6
+        guard let sectionType = LeagueSections(rawValue: section) else { return 0 }
+        switch sectionType {
+        case .upcomingEvents: return presenter?.getUpComingEventsCount() ?? 0
+        case .latestEvents: return presenter?.getLatestEventsCount() ?? 0
+        case .teams: return presenter?.getTeamsCount() ?? 0
+        }
+
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -192,20 +192,32 @@ extension LeagueDetailsViewController: UICollectionViewDataSource, UICollectionV
         switch sectionType {
         case .upcomingEvents:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpComingEventsViewCell", for: indexPath) as! UpComingEventsViewCell
-//            let model = presenter.getUpComingEvent(indexPath.item)
-            // cell.configure(with: model)
+            
+            if let model = presenter?.getUpComingEvent(at: indexPath.item) {
+                        cell.configure(event: model)
+                    } else {
+                        print("No event data found for item index: \(indexPath.item)")
+                    }
+            
             return cell
             
         case .latestEvents:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LatestEventsCollectionViewCell", for: indexPath) as! LatestEventsCollectionViewCell
-//            let model = presenter.getLatestEvent(indexPath.item)
-            // cell.configure(with: model)
+            if let model :Event = presenter?.getLatestEvent(at:indexPath.item){
+                cell.configure(event: model)
+
+            }else{
+                print("another empty one here....")
+            }
             return cell
             
         case .teams:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamsCollectionViewCell", for: indexPath) as! TeamsCollectionViewCell
-//            let model = presenter.getTeams(indexPath.item)
-            // cell.configure(with: model)
+            if let model:Team = presenter?.getTeam(at: indexPath.item){
+                cell.configure(team: model)}
+            else{
+                print("the presenter is empty as your heart");
+            }
             return cell
         }
     }
@@ -242,6 +254,28 @@ extension LeagueDetailsViewController {
     }
 }
 extension LeagueDetailsViewController: LeagueDetailsViewControllerProtocol {
+    func addToFavourite() {
+        
+    }
+    
+    func existsInVafourite() {
+        
+    }
+    
+    func showData() {
+        self.collectionView.reloadData()
+    }
+    
+    func showLoading() {
+        self.activityIndicator.startAnimating()
+        self.collectionView.isUserInteractionEnabled = false
+    }
+    
+    func hideLoading() {
+        self.activityIndicator.stopAnimating()
+        self.collectionView.isUserInteractionEnabled = true
+    }
+    
     
     func navigateToTeamDetails(with teamId: String, sport: Sport) {
         let detailsVC = TeamDetailsViewController()
