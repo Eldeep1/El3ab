@@ -5,4 +5,6 @@ struct Event{
     let homeTeamName: String?
     let enemyTeamName: String?
     let finalResult: String?
+    let homeTeamLogo: String?
+    let awayTeamLogo: String?
 }
