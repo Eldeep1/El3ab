@@ -22,7 +22,7 @@ class LeagueDetailsViewController: UIViewController {
     var presenter:LeagueDetailsPresenterProtocol?
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    private var visibleSections: [LeagueSections] = []
     func configureSelectedLeague(league: Leagues, sport: Sport) {
         presenter = LeagueDetailsPresenter(view:self , sport: sport, league: league)
     }
@@ -59,9 +59,9 @@ class LeagueDetailsViewController: UIViewController {
         presenter?.addToFavourite()
     }
     private func createCompositionalLayout() -> UICollectionViewLayout {
-        return UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+        return UICollectionViewCompositionalLayout { [self] (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             
-            guard let sectionType = LeagueSections(rawValue: sectionIndex) else { return nil }
+            let sectionType = visibleSections[sectionIndex]
             
             switch sectionType {
             case .upcomingEvents:
@@ -159,16 +159,16 @@ class LeagueDetailsViewController: UIViewController {
 extension LeagueDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return LeagueSections.allCases.count
+        return visibleSections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(indexPath.section==2){
+        if(indexPath.section==visibleSections.count-1){
             presenter?.didSelectTeam(at: indexPath.item)
         }
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let sectionType = LeagueSections(rawValue: section) else { return 0 }
+         let sectionType = visibleSections[section]
         switch sectionType {
         case .upcomingEvents: return presenter?.getUpComingEventsCount() ?? 0
         case .latestEvents: return presenter?.getLatestEventsCount() ?? 0
@@ -178,7 +178,7 @@ extension LeagueDetailsViewController: UICollectionViewDataSource, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let sectionType = LeagueSections(rawValue: indexPath.section) else { return UICollectionViewCell() }
+         let sectionType = visibleSections[indexPath.section]
         
         switch sectionType {
         case .upcomingEvents:
@@ -227,7 +227,7 @@ extension LeagueDetailsViewController {
             for: indexPath
         ) as! SectionHeaderView
 
-        switch LeagueSections(rawValue: indexPath.section) {
+        switch visibleSections[indexPath.section] {
         case .upcomingEvents:
             header.titleLabel.text = "Upcoming Events"
 
@@ -236,9 +236,6 @@ extension LeagueDetailsViewController {
 
         case .teams:
             header.titleLabel.text = "Teams"
-
-        case .none:
-            header.titleLabel.text = ""
         }
 
         return header
@@ -285,7 +282,10 @@ extension LeagueDetailsViewController: LeagueDetailsViewControllerProtocol {
     }
     
     func showData() {
-        self.collectionView.reloadData()
+
+        updateVisibleSections()
+
+        collectionView.reloadData()
     }
     
     func showLoading() {
@@ -305,5 +305,21 @@ extension LeagueDetailsViewController: LeagueDetailsViewControllerProtocol {
         navigationItem.backButtonDisplayMode = .minimal
 
         navigationController?.pushViewController(detailsVC, animated: true)
+    }
+    private func updateVisibleSections() {
+
+        visibleSections.removeAll()
+
+        if (presenter?.getUpComingEventsCount() ?? 0) > 0 {
+            visibleSections.append(.upcomingEvents)
+        }
+
+        if (presenter?.getLatestEventsCount() ?? 0) > 0 {
+            visibleSections.append(.latestEvents)
+        }
+
+        if (presenter?.getTeamsCount() ?? 0) > 0 {
+            visibleSections.append(.teams)
+        }
     }
 }
