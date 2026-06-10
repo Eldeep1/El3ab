@@ -5,9 +5,6 @@
 //  Created by depo on 10/06/2026.
 //
 
-import Testing
-
-
 
 import XCTest
 @testable import El3ab

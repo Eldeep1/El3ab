@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,7 @@
 		187C271F2FD305690097E204 /* SportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C271E2FD305690097E204 /* SportsViewController.swift */; };
 		187C27212FD3078C0097E204 /* SportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C27202FD3078C0097E204 /* SportsCollectionViewCell.swift */; };
 		187C27242FD3162C0097E204 /* UIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C27232FD3162C0097E204 /* UIColors.swift */; };
+		18809A2A2FDA0D2F003A00D7 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18809A292FDA0D2F003A00D7 /* CoreDataManagerTests.swift */; };
 		18BC7D7F2FD1A20C006825B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC7D7E2FD1A20C006825B8 /* AppDelegate.swift */; };
 		18BC7D812FD1A20C006825B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC7D802FD1A20C006825B8 /* SceneDelegate.swift */; };
 		18BC7D832FD1A20C006825B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC7D822FD1A20C006825B8 /* ViewController.swift */; };
@@ -88,6 +89,7 @@
 		187C271E2FD305690097E204 /* SportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewController.swift; sourceTree = "<group>"; };
 		187C27202FD3078C0097E204 /* SportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCollectionViewCell.swift; sourceTree = "<group>"; };
 		187C27232FD3162C0097E204 /* UIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColors.swift; sourceTree = "<group>"; };
+		18809A292FDA0D2F003A00D7 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
 		18BC7D7B2FD1A20C006825B8 /* El3ab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = El3ab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BC7D7E2FD1A20C006825B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18BC7D802FD1A20C006825B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				18BC7D982FD1A20E006825B8 /* El3abTests.swift */,
 				18BC7D9A2FD1A20E006825B8 /* Info.plist */,
 				B85CFD4B2FDA083A009F522B /* NetworkServiceTests.swift */,
+				18809A292FDA0D2F003A00D7 /* CoreDataManagerTests.swift */,
 			);
 			path = El3abTests;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B85CFD4C2FDA083A009F522B /* NetworkServiceTests.swift in Sources */,
+				18809A2A2FDA0D2F003A00D7 /* CoreDataManagerTests.swift in Sources */,
 				18BC7D992FD1A20E006825B8 /* El3abTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
