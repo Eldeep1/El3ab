@@ -8,11 +8,6 @@ import Kingfisher
 
 class TeamDetailsViewController: UIViewController {
     
-    private var teamId: String?
-    private var sport: Sport?
-    private var team: Team?
-    private let networkService = NetworkService.shared
-    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .bgColor
@@ -29,33 +24,33 @@ class TeamDetailsViewController: UIViewController {
     }()
     
     private let teamHeaderView: UIView = {
-         let view = UIView()
-         view.backgroundColor = .bgColor
-         view.translatesAutoresizingMaskIntoConstraints = false
-         return view
-     }()
-     
-     private let teamLogoImageView: UIImageView = {
-         let imageView = UIImageView()
-         imageView.contentMode = .scaleAspectFit
-         imageView.layer.cornerRadius = 60
-         imageView.layer.borderWidth = 2
-         imageView.layer.borderColor = UIColor.white.cgColor
-         imageView.backgroundColor = .systemGray5
-         imageView.clipsToBounds = true
-         imageView.translatesAutoresizingMaskIntoConstraints = false
-         return imageView
-     }()
-     
-     private let teamNameLabel: UILabel = {
-         let label = UILabel()
-         label.font = .systemFont(ofSize: 28, weight: .bold)
-         label.textColor = .white
-         label.textAlignment = .center
-         label.numberOfLines = 0
-         label.translatesAutoresizingMaskIntoConstraints = false
-         return label
-     }()
+        let view = UIView()
+        view.backgroundColor = .bgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let teamLogoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 60
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.backgroundColor = .systemGray5
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private let teamNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 28, weight: .bold)
+        label.textColor = .white
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     private let playersSectionView: UIView = {
         let view = UIView()
@@ -82,7 +77,7 @@ class TeamDetailsViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -112,7 +107,7 @@ class TeamDetailsViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -135,16 +130,25 @@ class TeamDetailsViewController: UIViewController {
         return indicator
     }()
     
+
+    private var presenter: TeamDetailsPresenter?
+    private var team: Team?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupCollectionViews()
-        fetchTeamDetails()
+        setupPresenter()
     }
     
     func configure(with teamId: String, sport: Sport) {
-        self.teamId = teamId
-        self.sport = sport
+        presenter = TeamDetailsPresenter()
+        presenter?.attachView(self)
+        presenter?.setTeamId(teamId, sport: sport)
+    }
+    
+    private func setupPresenter() {
+        presenter?.fetchTeamDetails()
     }
     
     private func setupUI() {
@@ -213,7 +217,6 @@ class TeamDetailsViewController: UIViewController {
             playersCollectionView.leadingAnchor.constraint(equalTo: playersSectionView.leadingAnchor),
             playersCollectionView.trailingAnchor.constraint(equalTo: playersSectionView.trailingAnchor),
             playersCollectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight),
-            
             playersCollectionView.bottomAnchor.constraint(equalTo: playersSectionView.bottomAnchor),
             
             emptyPlayersLabel.centerXAnchor.constraint(equalTo: playersCollectionView.centerXAnchor),
@@ -238,6 +241,7 @@ class TeamDetailsViewController: UIViewController {
             indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
+    
     private func setupCollectionViews() {
         playersCollectionView.delegate = self
         playersCollectionView.dataSource = self
@@ -246,30 +250,6 @@ class TeamDetailsViewController: UIViewController {
         coachesCollectionView.delegate = self
         coachesCollectionView.dataSource = self
         coachesCollectionView.register(TeamMemberCell.self, forCellWithReuseIdentifier: TeamMemberCell.identifier)
-    }
-    
-    private func fetchTeamDetails() {
-        guard let teamId = teamId, let sport = sport else {
-            showError("Team information missing")
-            return
-        }
-        
-        indicator.startAnimating()
-        
-        networkService.fetchTeamDetails(sport: sport, teamId: teamId) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.indicator.stopAnimating()
-                
-                switch result {
-                case .success(let team):
-                    self?.team = team
-                    self?.displayTeamInfo()
-                case .failure(let error):
-                    print("Error fetching team details: \(error)")
-                    self?.showError("Failed to load team details: \(error.localizedDescription)")
-                }
-            }
-        }
     }
     
     private func displayTeamInfo() {
@@ -294,13 +274,34 @@ class TeamDetailsViewController: UIViewController {
         playersCollectionView.reloadData()
         coachesCollectionView.reloadData()
     }
+}
+
+extension TeamDetailsViewController: TeamDetailsViewProtocol {
+    func showLoading() {
+        DispatchQueue.main.async {
+            self.indicator.startAnimating()
+        }
+    }
     
-    private func showError(_ message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            self.navigationController?.popViewController(animated: true)
-        })
-        present(alert, animated: true)
+    func hideLoading() {
+        DispatchQueue.main.async {
+            self.indicator.stopAnimating()
+        }
+    }
+    
+    func showTeamDetails(_ team: Team) {
+        self.team = team
+        displayTeamInfo()
+    }
+    
+    func showError(_ message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                self.navigationController?.popViewController(animated: true)
+            })
+            self.present(alert, animated: true)
+        }
     }
 }
 

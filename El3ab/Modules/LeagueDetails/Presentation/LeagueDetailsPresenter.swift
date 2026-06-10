@@ -67,8 +67,7 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
 
             defer { group.leave() }
 
-            guard let self else { return }
-
+            guard let self = self else { return }
             switch result {
 
             case .success(let allEvents):
@@ -100,8 +99,7 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
 
             defer { group.leave() }
 
-            guard let self else { return }
-
+            guard let self = self else { return }
             switch result {
 
             case .success(let teams):
@@ -114,8 +112,7 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
 
         group.notify(queue: .main) { [weak self] in
 
-            guard let self else { return }
-
+            guard let self = self else { return }
             self.view?.hideLoading()
 
             if let error = eventsError ?? teamsError {
