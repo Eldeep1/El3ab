@@ -14,5 +14,14 @@ class TeamsCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    func configure(team: Team) {
+        let label = team.name
+       
+        if let url = URL(string: team.logoImageName) {
+            teamLogoImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder_logo"))
+        } else {
+            teamLogoImageView.image = UIImage(named: "placeholder_logo")
+        }
+    }
 
 }
