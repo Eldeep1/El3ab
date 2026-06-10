@@ -140,7 +140,9 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
             view?.addToFavourite()
         }
         else{
-            view?.existsInVafourite()
+            if localDataStorage.deleteFavoriteLeague(leagueKey: league.leagueKey){
+                view?.removeFromFavourite()
+            }
         }
     }
     
