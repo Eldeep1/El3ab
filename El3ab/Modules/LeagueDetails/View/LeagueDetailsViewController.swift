@@ -50,7 +50,7 @@ class LeagueDetailsViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.color = .gray
         view.addSubview(activityIndicator)
-        presenter?.getEvents()
+        presenter?.fetchLeagueData()
     
     }
     @objc func favouriteTapped(){

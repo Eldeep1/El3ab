@@ -11,11 +11,12 @@ import Foundation
 enum APIRouter: URLRequestConvertible {
     case getLeagues(sport: Sport)
     case getTeamDetails(sport: Sport, teamId: String)
+    case getLeagueTeams(sport: Sport, leagueId: String)
     case getEvents(sport: Sport, leagueId: String, from: String, to: String)
     
     private var method: HTTPMethod {
         switch self {
-        case .getLeagues, .getTeamDetails, .getEvents:
+        case .getLeagues, .getTeamDetails, .getEvents, .getLeagueTeams:
             return .get
         }
     }
@@ -24,6 +25,7 @@ enum APIRouter: URLRequestConvertible {
             switch self {
             case .getLeagues(let sport),
                  .getTeamDetails(let sport, _),
+                 .getLeagueTeams(let sport,_),
                  .getEvents(let sport, _, _, _):
                 return "/\(sport.rawValue)/"
             }
@@ -41,7 +43,13 @@ enum APIRouter: URLRequestConvertible {
                 "met": "Teams",
                 "APIkey": Constants.apiKey,
                 "teamId": teamId
-            ]
+            ];
+        case .getLeagueTeams(sport: _, let leagueId):
+            return [
+                "met": "Teams",
+                "APIkey": Constants.apiKey,
+                "leagueId": leagueId
+            ];
         case .getEvents(_, let leagueId, let from, let to):
             return [
                 "met" : "Fixtures",

@@ -10,7 +10,7 @@ import Foundation
 protocol LeagueDetailsPresenterProtocol{
     func addToFavourite(leageu:Leagues)
     func didSelectTeam(at index:Int) //used
-    func getEvents()
+    func fetchLeagueData()
     func getUpComingEventsCount()->Int
     func getUpComingEvent(at index:Int) -> Event
     func getLatestEventsCount()->Int
@@ -37,48 +37,94 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
         self.networkService=networkService
         
     }
-    func getEvents(){
+    func fetchLeagueData() {
+
         view?.showLoading()
-        
+
         guard let thirtyDaysAgo = calendar.date(byAdding: .day, value: -30, to: today),
-              let thirtyDaysHence = calendar.date(byAdding: .day, value: 30, to: today) else { return }
-        
+              let upComingDays = calendar.date(byAdding: .day, value: 100, to: today)
+        else { return }
+
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-        
+
         let fromString = formatter.string(from: thirtyDaysAgo)
-        let toString = formatter.string(from: thirtyDaysHence)
-        
+        let toString = formatter.string(from: upComingDays)
+
+        let group = DispatchGroup()
+
+        var eventsError: Error?
+        var teamsError: Error?
+
+        group.enter()
+
         networkService.fetchEventDetails(
             sport: sport,
             leagueId: String(league.leagueKey),
             from: fromString,
             to: toString
         ) { [weak self] result in
-            guard let self = self else { return }
-            
+
+            defer { group.leave() }
+
+            guard let self else { return }
+
             switch result {
+
             case .success(let allEvents):
+
                 let rightNow = Date()
-                
-                upComingEvents = allEvents
-                    .filter { formatter.date(from: $0.eventDate ?? "") ?? rightNow >= rightNow }
-                    .sorted { $0.eventDate ?? "" < $1.eventDate ?? "" }
-                
-                pastEvents = allEvents
-                    .filter { formatter.date(from: $0.eventDate ?? "") ?? rightNow  < rightNow }
-                    .sorted { $0.eventDate ?? "" > $1.eventDate ?? "" }
-                
-                DispatchQueue.main.async {
-                    self.view?.hideLoading()
-                    self.view?.showData()
-                    
-                }
-                
+
+                self.upComingEvents = allEvents
+                    .filter {
+                        formatter.date(from: $0.eventDate ?? "") ?? rightNow >= rightNow
+                    }
+
+                self.pastEvents = allEvents
+                    .filter {
+                        formatter.date(from: $0.eventDate ?? "") ?? rightNow < rightNow
+                    }
+
             case .failure(let error):
-                print("Error fetching events: \(error)")
-                // Handle UI error state
+                eventsError = error
             }
+        }
+
+        // TEAMS
+        group.enter()
+
+        networkService.fetchLeagueTeams(
+            sport: sport,
+            leagueId: String(league.leagueKey)
+        ) { [weak self] result in
+
+            defer { group.leave() }
+
+            guard let self else { return }
+
+            switch result {
+
+            case .success(let teams):
+                self.teams = teams
+
+            case .failure(let error):
+                teamsError = error
+            }
+        }
+
+        group.notify(queue: .main) { [weak self] in
+
+            guard let self else { return }
+
+            self.view?.hideLoading()
+
+            if let error = eventsError ?? teamsError {
+                print(error)
+//                self.view?.showError(error.localizedDescription)
+                return
+            }
+
+            self.view?.showData()
         }
     }
     

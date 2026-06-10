@@ -10,6 +10,8 @@ protocol NetworkServiceProtocol {
     func fetchLeagues(sport: Sport, completion: @escaping (Result<[Leagues], Error>) -> Void)
     func fetchTeamDetails(sport: Sport, teamId: String, completion: @escaping (Result<Team, Error>) -> Void)
     func fetchEventDetails(sport: Sport, leagueId: String, from:String, to:String, completion: @escaping (Result<[Event], Error>) -> Void)
+    func fetchLeagueTeams(sport: Sport, leagueId: String, completion: @escaping (Result<[Team], Error>) -> Void)
+
 }
 
 class NetworkService: NetworkServiceProtocol {
@@ -64,6 +66,46 @@ class NetworkService: NetworkServiceProtocol {
                              if teamResponse.success == 1, let firstTeam = teamResponse.result.first {
                                  print("Successfully fetched team: \(firstTeam.teamName)")
                                  completion(.success(firstTeam.toTeam()))
+                             } else {
+                                 let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No team found in response"])
+                                 completion(.failure(error))
+                             }
+                         } catch {
+                             print("Decoding error: \(error)")
+                             completion(.failure(error))
+                         }
+                     } else {
+                         let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid data format"])
+                         completion(.failure(error))
+                     }
+                     
+                 case .failure(let error):
+                     print("Network error: \(error)")
+                     completion(.failure(error))
+                 }
+             }
+     }
+    func fetchLeagueTeams(sport: Sport, leagueId: String, completion: @escaping (Result<[Team], Error>) -> Void) {
+         print("Fetching team details for sport: \(sport.rawValue), league id: \(leagueId)")
+         
+         // First, get the raw response to see what we're getting
+         AF.request(APIRouter.getLeagueTeams(sport: sport, leagueId: leagueId))
+             .responseString { response in
+                 switch response.result {
+                 case .success(let string):
+                     print("Raw Team Response: \(string)")
+                     
+                     // Try to decode the response
+                     if let data = string.data(using: .utf8) {
+                         do {
+                             let decoder = JSONDecoder()
+                             let teamResponse = try decoder.decode(TeamResponse.self, from: data)
+                             
+                             if teamResponse.success == 1 {
+                                 let teams = teamResponse.result.map{
+                                     $0.toTeam()
+                                 }
+                                 completion(.success(teams))
                              } else {
                                  let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No team found in response"])
                                  completion(.failure(error))
