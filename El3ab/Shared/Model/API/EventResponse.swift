@@ -9,16 +9,30 @@ struct EventResponse: Codable {
     let success: Int
     let result: [EventAPI]?
 }
-
 struct EventAPI: Codable {
-    let eventKey,awayTeamKey, homeTeamKey,leagueKey: Int
-    let eventDate, eventTime, eventHomeTeam: String
-    let  eventAwayTeam, eventHalftimeResult: String
-    let eventFinalResult, eventStatus, countryName, leagueName: String
-    let leagueRound, leagueSeason, eventLive: String
-    let eventStadium, eventReferee: String
-    let homeTeamLogo, awayTeamLogo: String
-    let leagueLogo: String
+    let eventKey: Int?
+    let awayTeamKey: Int?
+    let homeTeamKey: Int?
+    let leagueKey: Int?
+
+    let eventDate: String?
+    let eventTime: String?
+    let eventHomeTeam: String?
+    let eventAwayTeam: String?
+    let eventHalftimeResult: String?
+    let eventFinalResult: String?
+    let eventStatus: String?
+    let countryName: String?
+    let leagueName: String?
+    let leagueRound: String?
+    let leagueSeason: String?
+    let eventLive: String?
+    let eventStadium: String?
+    let eventReferee: String?
+
+    let homeTeamLogo: String?
+    let awayTeamLogo: String?
+    let leagueLogo: String?
 
     enum CodingKeys: String, CodingKey {
         case eventKey = "event_key"
@@ -43,15 +57,16 @@ struct EventAPI: Codable {
         case awayTeamLogo = "away_team_logo"
         case leagueLogo = "league_logo"
     }
-    func toEvent()-> Event {
-        return Event(
-            eventDate: self.eventDate,
-            eventTime: self.eventTime,
-            homeTeamName: self.eventHomeTeam,
-            enemyTeamName: self.eventAwayTeam, // Maps eventAwayTeam to enemyTeamName
-            finalResult: self.eventFinalResult,
-            homeTeamLogo: self.homeTeamLogo,
-            awayTeamLogo: self.awayTeamLogo
+
+    func toEvent() -> Event {
+        Event(
+            eventDate: eventDate ?? "",
+            eventTime: eventTime ?? "",
+            homeTeamName: eventHomeTeam ?? "",
+            enemyTeamName: eventAwayTeam ?? "",
+            finalResult: eventFinalResult ?? "",
+            homeTeamLogo: homeTeamLogo ?? "",
+            awayTeamLogo: awayTeamLogo ?? ""
         )
     }
 }

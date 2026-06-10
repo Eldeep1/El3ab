@@ -17,7 +17,7 @@ struct TeamResponse: Codable {
 
 struct TeamAPI: Codable {
     let teamKey: Int
-    let teamName: String
+    let teamName: String?
     let teamLogo: String?
     let players: [PlayerAPI]?
     let coaches: [CoachAPI]?
@@ -36,7 +36,7 @@ struct TeamAPI: Codable {
         
         return Team(
             teamID: teamKey,
-            name: teamName,
+            name: teamName ?? "NAN",
             logoImageName: teamLogo ?? "",
             players: playerList,
             coaches: coachList
