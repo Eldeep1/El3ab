@@ -8,6 +8,7 @@
 import Foundation
 
 struct Team {
+    let teamID: Int
     let name: String
     let logoImageName: String
     let players: [Player]

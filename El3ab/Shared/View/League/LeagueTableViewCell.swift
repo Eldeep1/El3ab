@@ -14,7 +14,6 @@ class LeagueTableViewCell: UITableViewCell {
     @IBOutlet weak var leagueImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         leagueImageView.clipsToBounds = true
         
         self.selectionStyle = .none
@@ -26,9 +25,6 @@ class LeagueTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        //will navigate somehow later, think from the actual table view
-
-        // Configure the view for the selected state
     }
     override func layoutSubviews() {
         super.layoutSubviews()

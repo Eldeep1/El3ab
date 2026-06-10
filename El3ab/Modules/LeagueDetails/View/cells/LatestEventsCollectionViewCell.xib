@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LatestEventsCollectionViewCell" id="gTV-IL-0wX" customClass="LatestEventsCollectionViewCell" customModule="El3ab" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="371" height="98"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="371" height="98"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team_logo" translatesAutoresizingMaskIntoConstraints="NO" id="PQj-JK-K7z">
+                        <rect key="frame" x="16" y="12" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="NJd-hM-85a"/>
+                            <constraint firstAttribute="height" constant="48" id="zKU-Bj-Wed"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="team_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Q2U-xP-XaX" userLabel="enemy_logo">
+                        <rect key="frame" x="102" y="12" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="kgI-y5-2vc"/>
+                            <constraint firstAttribute="width" constant="48" id="nXB-Ft-VMt"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sVE-4I-3C5">
+                        <rect key="frame" x="72" y="28" width="22" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="man utd vs arsenal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5d-7B-aOl">
+                        <rect key="frame" x="166" y="12" width="136.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05-18, 20:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2P-wI-q1h">
+                        <rect key="frame" x="166" y="31.5" width="85" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 - 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vO-ej-QfC">
+                        <rect key="frame" x="322.5" y="12" width="32.5" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="sVE-4I-3C5" firstAttribute="leading" secondItem="PQj-JK-K7z" secondAttribute="trailing" constant="8" id="1nY-sn-Pxi"/>
+                <constraint firstItem="Q2U-xP-XaX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="2Ec-wj-j8n"/>
+                <constraint firstItem="PQj-JK-K7z" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Gxo-ws-qbc"/>
+                <constraint firstItem="sVE-4I-3C5" firstAttribute="top" secondItem="PQj-JK-K7z" secondAttribute="top" constant="16" id="IUC-Vp-17t"/>
+                <constraint firstItem="Q2U-xP-XaX" firstAttribute="leading" secondItem="sVE-4I-3C5" secondAttribute="trailing" constant="8" id="REP-sQ-Ahr"/>
+                <constraint firstItem="3vO-ej-QfC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="SOd-kC-ERD"/>
+                <constraint firstItem="3vO-ej-QfC" firstAttribute="leading" secondItem="R5d-7B-aOl" secondAttribute="trailing" constant="20" id="X7B-mN-7TJ"/>
+                <constraint firstItem="R5d-7B-aOl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="bWb-2O-bnA"/>
+                <constraint firstItem="L2P-wI-q1h" firstAttribute="leading" secondItem="R5d-7B-aOl" secondAttribute="leading" id="cnU-51-xdR"/>
+                <constraint firstItem="PQj-JK-K7z" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="fcZ-7S-ibo"/>
+                <constraint firstItem="L2P-wI-q1h" firstAttribute="top" secondItem="R5d-7B-aOl" secondAttribute="bottom" id="jT7-HQ-sR2"/>
+                <constraint firstItem="R5d-7B-aOl" firstAttribute="leading" secondItem="Q2U-xP-XaX" secondAttribute="trailing" constant="16" id="jyJ-zD-hBC"/>
+                <constraint firstItem="sVE-4I-3C5" firstAttribute="bottom" secondItem="PQj-JK-K7z" secondAttribute="bottom" constant="-16" id="rO7-qJ-rym"/>
+                <constraint firstAttribute="trailing" secondItem="3vO-ej-QfC" secondAttribute="trailing" constant="16" id="tKI-ow-UI2"/>
+            </constraints>
+            <size key="customSize" width="371" height="98"/>
+            <connections>
+                <outlet property="enemyLogoImageView" destination="Q2U-xP-XaX" id="sPg-P3-YAX"/>
+                <outlet property="matchScore" destination="3vO-ej-QfC" id="HXt-Yn-C8P"/>
+                <outlet property="matchTeamsLabel" destination="R5d-7B-aOl" id="fGX-Y8-4RK"/>
+                <outlet property="matchTimeLabel" destination="L2P-wI-q1h" id="pbc-xK-R8t"/>
+                <outlet property="teamLogoImageView" destination="PQj-JK-K7z" id="Fwq-MH-w1j"/>
+                <outlet property="vsLabel" destination="sVE-4I-3C5" id="1Ap-1c-aVW"/>
+            </connections>
+            <point key="canvasLocation" x="190" y="-16"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="team_logo" width="140" height="140"/>
+    </resources>
+</document>

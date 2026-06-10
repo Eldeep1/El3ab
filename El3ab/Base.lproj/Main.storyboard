@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,17 +28,18 @@
         <!--Team Details View Controller-->
         <scene sceneID="JAg-kI-baQ">
             <objects>
-                <viewController id="A72-3F-vjz" customClass="TeamDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamDetailsViewController" id="A72-3F-vjz" customClass="TeamDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tw6-Kp-jJY">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="Obe-AI-fTo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ObJ-bx-a6T"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrS-Lp-Saq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2192.0930232558139" y="-235.62231759656655"/>
+            <point key="canvasLocation" x="618" y="-1698"/>
         </scene>
         <!--Favourite Leagues View Controller-->
         <scene sceneID="6Kf-1D-r97">
@@ -65,7 +67,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="254" verticalHuggingPriority="251" text="Swipe Left To Delete" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wm4-Hp-Eef">
-                                                    <rect key="frame" x="36" y="14.999999999999998" width="156.33333333333337" height="20.333333333333329"/>
+                                                    <rect key="frame" x="36" y="14.999999999999998" width="156.33333333333334" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -105,11 +107,55 @@
                     <navigationItem key="navigationItem" id="CrJ-Zw-9GP"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="Kf2-dW-i6x" id="UdK-Dh-Zbh"/>
+                        <segue destination="C6q-Zc-o9q" kind="show" identifier="FavouritesLeaguesToLeagueDetails" id="IwC-U0-Vxg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xlx-Tm-YVz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="933.48837209302326" y="-236.26609442060087"/>
+        </scene>
+        <!--League Details View Controller-->
+        <scene sceneID="tjA-eE-srh">
+            <objects>
+                <viewController storyboardIdentifier="LeagueDetailsViewController" id="C6q-Zc-o9q" customClass="LeagueDetailsViewController" customModule="El3ab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZA5-bj-RCm">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="97q-3q-mb1">
+                                <rect key="frame" x="0.0" y="162" width="430" height="653"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewLayout key="collectionViewLayout" id="BiU-g2-bOZ"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="khS-eX-OnL">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2ve-sf-vou">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bRg-RY-6X0"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bRg-RY-6X0" firstAttribute="trailing" secondItem="97q-3q-mb1" secondAttribute="trailing" id="VP9-A9-CGB"/>
+                            <constraint firstItem="97q-3q-mb1" firstAttribute="leading" secondItem="bRg-RY-6X0" secondAttribute="leading" id="ZXl-wn-iWk"/>
+                            <constraint firstItem="bRg-RY-6X0" firstAttribute="bottom" secondItem="97q-3q-mb1" secondAttribute="bottom" id="oqm-e6-y5G"/>
+                            <constraint firstItem="97q-3q-mb1" firstAttribute="top" secondItem="bRg-RY-6X0" secondAttribute="top" id="vEe-JG-iQJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7rr-up-7xn"/>
+                    <connections>
+                        <outlet property="collectionView" destination="97q-3q-mb1" id="4vT-6G-EKS"/>
+                        <segue destination="A72-3F-vjz" kind="show" id="4vI-gC-Bnd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lL6-dm-f1t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-747" y="-1698"/>
         </scene>
         <!--El3ab-->
         <scene sceneID="TMl-mY-ZCv">
@@ -153,6 +199,7 @@
                     <navigationItem key="navigationItem" id="gwa-fi-yIb"/>
                     <connections>
                         <outlet property="leaguesTableView" destination="tq4-sM-Mys" id="7R6-0z-3Mu"/>
+                        <segue destination="C6q-Zc-o9q" kind="show" identifier="LeaguesViewControllerToLeaguesDetailsViewController" id="WMh-OK-K8d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GtC-rF-778" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -226,6 +273,9 @@
             <point key="canvasLocation" x="34.883720930232556" y="-236.26609442060087"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="IwC-U0-Vxg"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="sportscourt" catalog="system" width="128" height="83"/>

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Alamofire
 protocol FavouriteLeaguesViewProtocol{
     func reloadFavourites()
     func showInternetError()
@@ -34,7 +34,17 @@ class FavouriteLeaguesViewController: UIViewController {
         leaguesTableView.separatorStyle = .none
         leaguesTableView.dataSource = self
         leaguesTableView.delegate = self
+ 
         
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FavouritesLeaguesToLeagueDetails" {
+            let LeagueDetailsVC = segue.destination as! LeagueDetailsViewController
+            if let league = sender as? Leagues {
+                //todo this should open the correct sport name not always football
+                LeagueDetailsVC.configureSelectedLeague(league: league, sport: .football)
+            }
+        }
     }
 }
 
@@ -67,6 +77,10 @@ extension FavouriteLeaguesViewController : UITableViewDelegate,UITableViewDataSo
         cell.leagueTitle.text=league?.leagueName
         
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let league = presenter?.getFavouriteLeagueItem(index: indexPath.row)
+        performSegue(withIdentifier: "FavouritesLeaguesToLeagueDetails", sender: league)
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete", handler:{
