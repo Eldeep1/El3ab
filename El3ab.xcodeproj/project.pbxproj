@@ -316,7 +316,6 @@
 				B84685972FD69F5600EED429 /* Favourites */,
 				185A369E2FD49DDB00513D24 /* TeamDetails */,
 				B84E48982FD3E6B00007E287 /* Leagues */,
-				18BC7DBC2FD1F1B3006825B8 /* Main */,
 				18BC7DB32FD1B5B2006825B8 /* Sports */,
 			);
 			path = Modules;
@@ -343,21 +342,6 @@
 			children = (
 				187C271E2FD305690097E204 /* SportsViewController.swift */,
 				187C27202FD3078C0097E204 /* SportsCollectionViewCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		18BC7DBC2FD1F1B3006825B8 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				18BC7DBD2FD1F1BE006825B8 /* View */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		18BC7DBD2FD1F1BE006825B8 /* View */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = View;
 			sourceTree = "<group>";
