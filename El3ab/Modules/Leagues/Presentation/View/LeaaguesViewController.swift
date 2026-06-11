@@ -17,7 +17,6 @@ protocol LeaguesViewProtocol : AnyObject{
 
 class LeaguesViewController: UIViewController {
     
-    // Create table view programmatically
     private let leaguesTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -141,7 +140,6 @@ extension LeaguesViewController: UITableViewDelegate, UITableViewDataSource {
         cell.leagueCountry.text = league.countryName
         cell.leagueTitle.text = league.leagueName
         
-        // Load image with Kingfisher
         if let logoURL = league.leagueLogo, !logoURL.isEmpty, let url = URL(string: logoURL) {
             cell.leagueImageView.kf.setImage(
                 with: url,

@@ -9,7 +9,7 @@ import Foundation
 
 protocol LeagueDetailsPresenterProtocol{
     func addToFavourite()
-    func didSelectTeam(at index:Int) //used
+    func didSelectTeam(at index:Int)
     func fetchLeagueData()
     func getUpComingEventsCount()->Int
     func getUpComingEvent(at index:Int) -> Event
@@ -102,7 +102,6 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
             }
         }
 
-        // TEAMS
         group.enter()
 
         networkService.fetchLeagueTeams(
@@ -130,7 +129,6 @@ class LeagueDetailsPresenter : LeagueDetailsPresenterProtocol {
 
             if let error = eventsError ?? teamsError {
                 print(error)
-//                self.view?.showError(error.localizedDescription)
                 return
             }
 

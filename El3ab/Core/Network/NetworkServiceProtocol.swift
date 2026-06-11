@@ -50,14 +50,12 @@ class NetworkService: NetworkServiceProtocol {
     func fetchTeamDetails(sport: Sport, teamId: String, completion: @escaping (Result<Team, Error>) -> Void) {
          print("Fetching team details for sport: \(sport.rawValue), teamId: \(teamId)")
          
-         // First, get the raw response to see what we're getting
          AF.request(APIRouter.getTeamDetails(sport: sport, teamId: teamId))
              .responseString { response in
                  switch response.result {
                  case .success(let string):
                      print("Raw Team Response: \(string)")
                      
-                     // Try to decode the response
                      if let data = string.data(using: .utf8) {
                          do {
                              let decoder = JSONDecoder()
@@ -88,14 +86,12 @@ class NetworkService: NetworkServiceProtocol {
     func fetchLeagueTeams(sport: Sport, leagueId: String, completion: @escaping (Result<[Team], Error>) -> Void) {
          print("Fetching team details for sport: \(sport.rawValue), league id: \(leagueId)")
          
-         // First, get the raw response to see what we're getting
          AF.request(APIRouter.getLeagueTeams(sport: sport, leagueId: leagueId))
              .responseString { response in
                  switch response.result {
                  case .success(let string):
                      print("Raw Team Response: \(string)")
                      
-                     // Try to decode the response
                      if let data = string.data(using: .utf8) {
                          do {
                              let decoder = JSONDecoder()

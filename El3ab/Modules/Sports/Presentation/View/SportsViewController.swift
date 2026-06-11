@@ -75,7 +75,7 @@ class SportsViewController: UIViewController, UICollectionViewDelegate, UICollec
         let insets: CGFloat = 40
         let totalSpacing = spacing + insets
         let width = (collectionView.bounds.width - totalSpacing) / 2
-        let height = width * 1.4 // Made height bigger
+        let height = width * 1.4 
         
         return CGSize(width: width, height: height)
     }

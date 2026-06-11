@@ -83,7 +83,6 @@ class TeamMemberCell: UICollectionViewCell {
             subtitleLabel.text = "Player"
         }
         
-        // Load image from URL if imageName is a URL
         if !player.imageName.isEmpty, let url = URL(string: player.imageName) {
             imageView.kf.setImage(with: url, placeholder: UIImage(systemName: "person.circle.fill"))
         } else {
